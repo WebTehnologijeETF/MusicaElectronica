@@ -263,12 +263,12 @@ body {
 #video-container{
     width: 397px;
     padding: 0;
-	height: 294px;
+	height: 298px;
 	width: 30%;
 	margin-right: 17%;
 	float: right;
 	position: relative;
-	top: -600px;
+	top: -604px;
 	border-bottom: 1px solid #a1a1a1;
 }
 
@@ -489,7 +489,7 @@ padding-right: 0;
     font-size: 26px;
     padding-bottom: 10px; 
 	padding-top: 0px;
-	height: 282px;
+	height: 285px;
 	width: 30%;
 	margin-right: 17%;
 	padding-left: 0;
