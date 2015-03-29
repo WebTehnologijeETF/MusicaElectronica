@@ -1,0 +1,576 @@
+/*body {background-image: url("3.jpg"); background-repeat: no-repeat;}*/
+
+@font-face {
+  font-family: 'Nova SOLID';
+  src: url('http://www.fontsaddict.com/fontface/nova-solid-solid.ttf');
+}
+
+html{
+min-width: 800px;
+}
+	
+
+#okvir {
+	min-width: 670px;	
+	margin: 0;
+	padding: 0;
+	width:100%;
+	height:100%;
+    background-image: url("mainbckg6.jpg");
+	background-size: cover;
+    background-position: center;
+	background-attachment: fixed;	
+}
+
+
+body {
+    width:100%;
+	margin: 0;
+	padding: 0;
+	min-width: 670px;
+}
+
+
+/*h1{
+    padding-top: 2px;
+    font-size:28pt;
+    color:black;
+    font-family: Nova SOLID;
+    padding: 0;
+	margin: 0;
+}*/
+
+
+#zaglavlje{
+    margin: 0;
+    clear: both;
+    height:40px;
+    background-color: #FFFFFF;
+	padding-bottom: 7px;
+	padding-top: 0px;
+	padding-left: 0;
+	padding-right: 0;
+	opacity: 0.6; 
+	width: 100%;
+	max-width:100%;
+	min-width: 670px;
+	z-index: 10;
+	top:0px;
+}
+
+#logo{
+    padding: 0;
+    margin: 0;
+    border: 0;
+	float: left;
+	position: absolute;
+	top: 3px;
+	left: 50px;
+	background-image: url("logo.jpg");
+	width: 330px;
+	height:40px;
+}
+
+#fblink{
+    padding: 0;
+    margin: 0;
+    border: 0;
+	float: right;
+	position: relative;
+	top: 11px;
+	right: 143px;
+	height: 40px;
+	width: 41px;
+	background-image: url("fblink8.jpg");
+	width:16px;
+	height: 24px;
+}
+
+#fblink a {outline: none;}
+#fblink:hover {opacity: 0.6;}
+
+#twitterlink{
+    padding: 0;
+    margin: 0;
+    border: 0;
+	float: right;
+	position: relative;
+	top: 13px;
+	right: 81px;
+	background-image: url("twitterlink8.jpg");
+	width:28px;
+	height: 19px;
+}
+
+#twitterlink a {outline: none;}
+#twitterlink:hover { opacity: 0.6;}
+
+#googlepluslink{
+    padding: 0;
+    margin: 0;
+    border: 0;
+	float: right;
+	position:relative;
+	top: 10px;
+	right: 16px;
+	background-image: url("googlepluslink8.jpg");
+	width:16px;
+	height: 24px;
+
+}
+
+#googlepluslink a {outline: none;}
+#googlepluslink:hover { opacity: 0.6;}
+
+#ytlink{
+    padding: 0;
+    margin: 0;
+    border: 0;
+	float: right;
+	position: relative;
+	top: 7px;
+	right: 221px;
+	background-image: url("ytlink3.jpg");
+	width:23px;
+	height: 30px;
+}
+
+#ytlink a {outline: none;}
+#ytlink:hover { opacity: 0.6;}
+
+
+#zaglavljeDivider { 
+    width: 1px; 
+    background-color: black; 
+    height: 47px; 
+    float: left;
+	position: relative;	
+}
+     
+
+#meni
+{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+	max-width: 100%;
+	min-width: 720px;
+	top: 40px;
+	clear:both;
+}
+
+#whatisME, #djs, #shows, #gear, #contact, #partners, #linkhome
+{ 
+    color: cyan;
+	text-shadow: -2px 0 black, 0 1px black, 2px 0 black, 0 -2px black;
+	font-size: 22px;
+	font-weight: bold;
+	font-family: "nova SOLID";
+    top: 50%;
+	border: 0;
+    text-align: center;
+	padding-top:18px;
+	padding-bottom:50px;
+    height: 65px;
+	filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+	outline: none;
+	float: left;
+	overflow: hidden;
+    background-size: cover;
+    background-position: center;
+	box-sizing: border-box;
+	width: calc(100% / 6);
+    max-width: calc(100% / 6);
+	min-width: 20px;
+}
+
+#whatisME{background-image: url("menuitem1.jpg");}
+#djs{background-image: url("menuitem2.jpg");}
+#shows{background-image: url("menuitem3.png");}
+#gear{background-image: url("menuitem4.jpg");}
+#contact{background-image: url("menuitem51.jpg");}
+#partners{background-image: url("menuitem6.jpg");}
+#linkhome{background-image: url("linkhome.jpg");}
+
+
+#whatisME:hover, #djs:hover, #shows:hover, #gear:hover, #contact:hover, #partners:hover, #linkhome:hover { filter: none;
+  -webkit-filter: grayscale(0%); }
+  
+ #main{
+    color: white;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	padding-left: 5%;
+	padding-right: 5%;
+	clear: both;	  
+	width: 100%;
+	overflow:hidden;
+    height:100%;
+	min-height: 600px;
+    
+	background-image: url("mainbckg64.jpg");
+	background-size: cover;
+    background-position: center;
+	background-attachment: fixed;
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+	min-width: 670px;
+ }
+ 
+ 
+ #podnozje{
+   padding-top: 6px;
+   padding-bottom: 12px;
+   padding-left: 0px;
+   padding-right: 0px;
+   margin: 0;
+   text-align: center;
+   font-size: 11px;
+   clear: both;
+   width:100%;
+   max-width:100%;
+   height:20px;   
+   background-color: #FFFFFF;
+   opacity: 0.6;
+   min-width: 670px;
+ }
+ 
+ #naslovGlavnaVijest
+{
+    font-size: 23px;
+	font-weight: bold;
+}
+ 
+.naslovVijesti
+{
+    font-size: 17px;
+	font-weight: bold;
+	text-align: left;
+}
+
+.bywho
+{
+    font-size: 15px;
+	color: cyan;
+}
+
+#glavnaVijest, #showsglavnaVijest, #gearglavnaVijest
+{
+    box-sizing: border-box;
+    max-width: 72%;
+	min-width: 40%;    
+	min-height: 180px;
+	height: 33%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 0;
+	padding-right: 0;
+	margin-left: 14%;
+	margin-right: 14%;
+	margin-top:  0;
+	margin-bottom: 0;
+	float: left;
+	word-wrap: break-word;
+	text-align: justify;
+	font-size: 15px;
+	border-bottom: 1px solid #a1a1a1;
+}
+
+#vijest2, #vijest4, #vijest6  {
+    box-sizing: border-box;
+    width: 18%;
+    max-width: 18%;
+	min-width: 20px;
+    min-height:30px;
+    height: 305px; 
+	padding-top: 10px;
+	padding-bottom: 280px;
+	padding-left: 0;
+	padding-right: 0;
+	margin-left: 14%;
+	margin-top: 0;
+	margin-bottom: 0;
+	float: left;
+	clear: left;
+	word-wrap: break-word;
+	font-size: 15px;
+	border-bottom: 1px solid #a1a1a1;
+}
+
+
+ #vijest3, #vijest5, #vijest7,  #gearvijest3, #gearvijest5, #gearvijest7,  #showsvijest3, #showsvijest5, #showsvijest7{
+    box-sizing: border-box;
+    width: 18%;
+    max-width: 18%;
+	min-width: 20px;
+    min-height:30px;
+    height: 305px;      
+	padding-top: 10px;
+	padding-bottom: 280px;
+	padding-left: 0;
+	padding-right: 0;
+	margin-right: 48.5%;
+	margin-top: 0;
+	margin-bottom: 0;
+	float: right;
+	word-wrap: break-word;
+	font-size: 15px;
+	border-bottom: 1px solid #a1a1a1;
+ }
+ 
+ p {text-align: justify;}
+
+ #imageGlavnaVijest{background-image: url("mikevale.jpg");}
+ #imagevijest2{background-image: url("epsilonpropak.jpg");}
+ #imagevijest3{background-image: url("epsilonpropak.jpg");}
+ #imagevijest4{background-image: url("hardwellvijest4.jpg");}
+ #imagevijest5{background-image: url("dyrovijest5.jpg");}
+ #imagevijest6{background-image: url("logo3.jpg");}
+ #imagevijest7{background-image: url("tmw.jpg");}
+ 
+ #imageGlavnaVijest{
+    width:240px; 
+    height:240px;  
+	background-position: center;
+	background-size: cover;
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 0px;    
+    padding:0;}
+ 
+ #imagevijest2, #imagevijest3, #imagevijest4, #imagevijest5, #imagevijest6,  #imagevijest7 {
+    width:140px; 
+    height:140px;  
+	background-position: center;
+	background-size: cover;
+	clear:both;
+	margin: 0;    
+    padding:0;
+}
+
+
+table, td, th {border-collapse:collapse; margin-left: 100px;}
+table {border-spacing:0;}
+
+caption
+{   
+    margin-top: 11px;
+    font-size:28pt;   
+	border: 1px solid;
+	border-color: gray;
+	border-collapse: collapse;
+	border-spacing:0;
+}
+
+.left{
+    width:200px;
+    border: 1px solid;
+	border-top: 0;
+	border-color: gray;
+	padding: 3px 3px 3px 3px;
+	text-align: center;
+}
+
+.mid{
+   width:500px;
+   border: 1px solid;
+   border-top: 0;
+   border-left: 0;
+   border-color: gray;
+   padding: 3px 3px .75em 3px;
+   font-size: 15px;
+}
+
+.right{
+    width: 150px;
+    border: 1px solid;
+	border-top: 0;
+	border-left: 0;
+	border-color: gray;
+	padding: 3px 3px .75em 3px;
+	font-size: 15px;
+}
+
+#tableslika1 {background-image: url("hardwellvijest4.jpg");}
+#tableslika2 {background-image: url("dvlm.jpg");}
+#tableslika3 {background-image: url("avb.jpg");}
+#tableslika4 {background-image: url("mg.jpg");}
+#tableslika5 {background-image: url("tiesto.jpg");}
+#tableslika6 {background-image: url("avicii.jpg");}
+#tableslika7 {background-image: url("dg.jpg");}
+#tableslika8 {background-image: url("skrilly.jpg");}
+#tableslika9 {background-image: url("nicky.jpg");}
+#tableslika10 {background-image: url("sa.jpg");}
+
+#tableslika1, #tableslika2, #tableslika3, #tableslika4, #tableslika5, #tableslika6,
+#tableslika7, #tableslika8, #tableslika9, #tableslika10 
+{
+	width:200px; 
+	height:200px;
+	background-position: center;
+	background-size: cover;
+	clear:both;
+	margin: 0;    
+    padding: 0;}
+
+
+.video-container iframe {
+	width: 33%;
+	height: 280px;
+	float: right;
+	box-sizing: border-box;
+	min-width: 18%;
+	margin-right: 14%;
+	padding-left: 0;
+	padding-right: 0;
+	position: relative;
+	top: -600px;
+}
+
+#contactformalijevo
+{
+width: 25%;
+margin-top: 100px;
+margin-left:28%;
+float: left;
+padding-right: 0;
+}
+
+#contactformadesno
+{
+	width: 35%;
+	padding-left: 0;
+	margin-top: 100px;
+	margin-right: 12%;
+	float: right;
+}
+
+#naslovforme
+{
+	width: 40%;
+	position: absolute;
+	right: 30%;
+	left: 30%;
+	margin-right: 30%;
+	margin-left: 30%;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	clear: both;
+	font-size: 26px;
+}
+
+#listapartners
+{
+    font-size: 26px;
+    padding-bottom: 10px; 
+	padding-top: 25px;
+	height: 250px;
+	width: 30%;
+	margin-right: 17%;
+	padding-left: 0;
+	padding-right: 0;
+	float: right;
+	position: relative;
+	top: -566px;
+	border-bottom: 1px solid #a1a1a1;
+}
+
+ul{list-style-image: url('http://www.w3schools.com/cssref/sqpurple.gif'); color: cyan;}
+ul a{color:cyan;}
+
+
+#text
+{
+	max-width: 72%;
+	min-width: 40%;   
+	position: absolute;
+	margin-left: 12%;
+	margin-right: 16%;
+	margin-top: 50px;
+	padding: 0;
+	text-align: justify;
+	clear: both;
+	font-size: 18px;
+}
+
+
+
+#showsvijest2, #showsvijest4, #showsvijest6, #gearvijest2, #gearvijest4, #gearvijest6  {
+    box-sizing: border-box;
+    width: 18%;
+    max-width: 18%;
+	min-width: 20px;
+    min-height:30px;
+    height: 305px; 
+	padding-top: 10px;
+	padding-bottom: 280px;
+	padding-left: 0;
+	padding-right: 0;
+	margin-left: 14%;
+	margin-top: 0;
+	margin-bottom: 0;
+	float: left;
+	clear: left;
+	word-wrap: break-word;
+	font-size: 15px;
+	border-bottom: 1px solid #a1a1a1;
+}
+
+ 
+
+ 
+
+ #showsimageGlavnaVijest{background-image: url("tmw.jpg");}
+ #showsimagevijest2{background-image: url("epsilonpropak.jpg");}
+ #showsimagevijest3{background-image: url("aviciiconcert.jpg");}
+ #showsimagevijest4{background-image: url("hardwellvijest4.jpg");}
+ #showsimagevijest5{background-image: url("dyrovijest5.jpg");}
+ #showsimagevijest6{background-image: url("tiesto.jpg");}
+ #showsimagevijest7{background-image: url("sensation.jpg");}
+ 
+ #showsimageGlavnaVijest,  #gearimageGlavnaVijest{
+    width:240px; 
+    height:240px;  
+	background-position: center;
+	background-size: cover;
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 0px;    
+    padding:0;}
+ 
+ #showsimagevijest2, #showsimagevijest3, #showsimagevijest4, #showsimagevijest5, #showsimagevijest6,  #showsimagevijest7,
+ #gearimagevijest2, #gearimagevijest3, #gearimagevijest4, #gearimagevijest5, #gearimagevijest6,  #gearimagevijest7 {
+    width:140px; 
+    height:140px;  
+	background-position: center;
+	background-size: cover;
+	clear:both;
+	margin: 0;    
+    padding:0;}
+
+
+
+ 
+
+ #gearimageGlavnaVijest{background-image: url("epsilonpropak.jpg");}
+ #gearimagevijest7{background-image: url("epsilonspeakers.jpg");}
+ #gearimagevijest3{background-image: url("udgcreatorcase.jpg");}
+ #gearimagevijest4{background-image: url("ghp.jpg");}
+ #gearimagevijest5{background-image: url("traktorkontrols8.jpg");}
+ #gearimagevijest6{background-image: url(" pioneerplx1000.jpg");}
+
+ 
+
+ div.centrirano
+{
+    text-align: center;
+}
+
+div.centrirano table 
+{
+    margin: 0 auto; 
+    text-align: left;
+}
