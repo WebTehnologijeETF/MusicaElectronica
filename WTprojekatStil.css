@@ -250,6 +250,28 @@ body {
 	text-align: left;
 }
 
+.videonaslov
+{
+    font-size: 17px;
+	font-weight: bold;
+	text-align: left;
+	clear: both;
+	padding-bottom: 10px;
+	
+}
+
+#video-container{
+    width: 20%;
+    padding: 0;
+	height: 300px;
+	width: 30%;
+	margin-right: 17%;
+	float: right;
+	position: relative;
+	top: -606px;
+	border-bottom: 1px solid #a1a1a1;
+}
+
 .bywho
 {
     font-size: 15px;
@@ -418,15 +440,15 @@ caption
 
 .video-container iframe {
 	width: 33%;
-	height: 280px;
+	height: 33px;
 	float: right;
 	box-sizing: border-box;
 	min-width: 18%;
 	margin-right: 14%;
-	padding-left: 0;
-	padding-right: 0;
+	padding: 0;
 	position: relative;
-	top: -600px;
+	top: -500px;
+	
 }
 
 #contactformalijevo
@@ -466,15 +488,15 @@ padding-right: 0;
 {
     font-size: 26px;
     padding-bottom: 10px; 
-	padding-top: 25px;
-	height: 250px;
+	padding-top: 0px;
+	height: 282px;
 	width: 30%;
 	margin-right: 17%;
 	padding-left: 0;
 	padding-right: 0;
 	float: right;
 	position: relative;
-	top: -566px;
+	top: -595px;
 	border-bottom: 1px solid #a1a1a1;
 }
 
