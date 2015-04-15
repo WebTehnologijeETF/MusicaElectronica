@@ -17,27 +17,52 @@
             <a href="https://twitter.com/?lang=en" target="_blank"><div id="twitterlink"></div></a>
             <a href="https://plus.google.com/" target="_blank"><div id="googlepluslink"></div></a>
         </div>
-		<div id="meni">	    			
-					<a href="genre.html"><div id="whatisME">About electronic music</div></a>
-					<a href="djs.html"><div id="djs">DJs</div></a>
-					<a href="shows.html"><div id="shows">Shows</div></a>
-					<a href="gear.html"><div id="gear">Gear</div></a>
-					<a href="WTprojekat.html"><div id="linkhome">Home</div></a>
-					<a href="partners.html"><div id="partners">Partners</div></a>						
+		<div id="meni">	    
+		    <SCRIPT src = "Skripte.js" ></SCRIPT>
+			<a href="#"><div id="whatisME" onmouseover="mouseOverMenu1('MEmenu', 'whatisME')" onmouseout="mouseOutMenu1('MEmenu', 'whatisME')">About Musica Electronica</div></a>		
+			<a href="#"><div id="djs" onmouseover="mouseOverMenu1('DJmenu', 'djs')" onmouseout="mouseOutMenu1('DJmenu', 'djs')">DJs</div></a>
+			<a href="#"><div id="shows" onmouseover="mouseOverMenu1('ShowsMenu', 'shows')" onmouseout="mouseOutMenu1('ShowsMenu', 'shows')">Shows</div></a>
+			<a href="#" onmouseover="mouseOverMenu1('GearMenu', 'gear')" onmouseout="mouseOutMenu1('GearMenu', 'gear')"><div id="gear">Gear</div></a>
+			<a href="contact.html"><div id="contact">Contact</div></a>
+			<a href="partners.html"><div id="partners">Partners</div></a>
+			
+			<ul id="MEmenu" onmouseover="mouseOverMenu1('MEmenu', 'whatisME')" onmouseout="mouseOutMenu1('MEmenu', 'whatisME')">
+				<li><a href="#">About us (in construction...)</a></li>
+				<li><a href="genre.html">About electronic music (working)</a></li>
+				<li><a href="#">Rest under construcion</a></li>
+			</ul> 
+			
+			<ul id="DJmenu" onmouseover="mouseOverMenu1('DJmenu', 'djs')" onmouseout="mouseOutMenu1('DJmenu', 'djs')">
+				<li><a href="#">What is a DJ (in construction...)</a></li>
+				<li><a href="#">Becoming a DJ (in construcion...)</a></li>
+				<li><a href="djs.html">Top10 DJS 2014/2015 (working)</a></li>
+				<li><a href="#">Rest under construcion</a></li>		
+			</ul> 
+			
+			<ul id="ShowsMenu" onmouseover="mouseOverMenu1('ShowsMenu', 'shows')" onmouseout="mouseOutMenu1('ShowsMenu', 'shows')">
+				<li><a href="shows.html">News (working)</a></li>
+				<li><a href="#">Top shows 2014/2015 (in construction...)</a></li>
+				<li><a href="#">Rest under construcion</a></li>
+			</ul> 
+			
+			<ul id="GearMenu" onmouseover="mouseOverMenu1('GearMenu', 'gear')" onmouseout="mouseOutMenu1('GearMenu', 'gear')">
+				<li><a href="gear.html">News (working)</a></li>
+				<li><a href="#">Choosing right gear (in construction...)</a></li>
+				<li><a href="#">Rest under construcion</a></li>
+			</ul>
 		</div>
 		<div id="main">
 		<span id="naslovforme">Contact us (forma se ispravno prikazuje u Mozilla Firefox)</span>
-			<div id="contactformalijevo">
-				<INPUT TYPE="TEXT" NAME="Ime" VALUE="Name" SIZE="18">		
-				<INPUT TYPE="email" NAME="Email" VALUE="Email" SIZE="18"> 
-				<p><INPUT TYPE="TEXT" NAME="Website" VALUE="Website" SIZE="40"></p>
-				<p><textarea name="Poruka" cols="30" rows="10">Message</textarea></p>
-				<p><INPUT TYPE="SUBMIT" NAME="P1" VALUE="Submit"> 
-			</div>
-			<div id="contactformadesno">
-				<textarea name="Poruka" cols="30" rows="15" class="field left" readonly>To find more about us or to help us with your work or corporate identity, please fill in the form and click on submit.
+		<span id="contactExpl">Fields marked with asterix (&lowast;) are required</span>
+			<form name="contactforma" id="contactforma" method="GET">
+				<span id = "errorName"></span><INPUT TYPE="TEXT" NAME="contactIme" VALUE="*Name" id="contactIme" SIZE="40">		
+				<span id = "errorMail"></span><INPUT TYPE="TEXT" NAME="contactEmail" VALUE="*Email" id="contactEmail" SIZE="40"> 
+				<span id = "errorWebsite"></span><INPUT TYPE="TEXT" NAME="contactWebsite" VALUE="Website" id = "contactWebsite" SIZE="40">
+				<span id = "errorPoruka"></span><textarea name="contactPoruka" cols="30" rows="8" id = "contactPoruka">&lowast;Message</textarea>
+				<INPUT TYPE="Button" NAME="contactSubmit" VALUE="Submit" ID="contactSubmit" onclick="validacijaForme()"> 
+				<textarea name="TextAreaOstalo" id="TextAreaOstalo" cols="40" rows="15" class="field left" readonly>To find more about us or to help us with your work or corporate identity, please fill in the form and click on submit.
 				</textarea>
-			</div>
+			</form>
 		</div>
 		<div id="podnozje">
 		    &copy; 2014/2015 Haris &#352;emi&#263; All Rights Reserved

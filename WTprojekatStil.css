@@ -451,22 +451,91 @@ caption
 	
 }
 
-#contactformalijevo
+#TextAreaOstalo
 {
-width: 25%;
-margin-top: 100px;
-margin-left:28%;
-float: left;
-padding-right: 0;
+	position: absolute;
+	right: 400px;
+	top: 250px;
+	width: 240px;
 }
 
-#contactformadesno
+#contactExpl
 {
-	width: 35%;
-	padding-left: 0;
-	margin-top: 100px;
-	margin-right: 12%;
-	float: right;
+    position: absolute;
+	left: 400px;
+	top: 225px;
+	font-size: 12px;
+}
+
+#contactIme
+{
+    position: absolute;
+	left: 400px;
+	top: 250px;
+}
+
+#contactEmail
+{
+    position: absolute;
+	left: 400px;
+	top: 285px;   
+}
+
+#contactWebsite
+{
+    position: absolute;
+	left: 400px;
+	top: 320px;   
+}
+
+#contactPoruka
+{
+    position: absolute;
+	left: 400px;
+	top: 355px;   
+}
+
+#contactSubmit
+{
+    position: absolute;
+	left: 400px;
+	top: 515px;   
+}
+
+#errorName
+{
+    font-size: 15px;
+    padding-left: 26px;
+    position: absolute;
+	left: 250px;
+	top: 250px;
+}
+
+#errorMail
+{
+    font-size: 15px;
+    padding-left: 26px;
+    position: absolute;
+	left: 250px;
+	top: 285px;
+}
+
+#errorWebsite
+{
+    font-size: 15px;
+    padding-left: 26px;
+    position: absolute;
+	left: 250px;
+	top: 320px;
+}
+
+#errorPoruka
+{
+    font-size: 15px;
+    padding-left: 26px;
+    position: absolute;
+	left: 215px;
+	top: 355px;
 }
 
 #naslovforme
@@ -489,7 +558,7 @@ padding-right: 0;
     font-size: 26px;
     padding-bottom: 10px; 
 	padding-top: 0px;
-	height: 285px;
+	height: 284px;
 	width: 30%;
 	margin-right: 17%;
 	padding-left: 0;
@@ -500,8 +569,8 @@ padding-right: 0;
 	border-bottom: 1px solid #a1a1a1;
 }
 
-ul{list-style-image: url('http://www.w3schools.com/cssref/sqpurple.gif'); color: cyan;}
-ul a{color:cyan;}
+#listapartners ul{list-style-image: url('http://www.w3schools.com/cssref/sqpurple.gif'); color: cyan;}
+#listapartners ul a{color:cyan;}
 
 
 #text
@@ -596,3 +665,41 @@ div.centrirano table
     margin: 0 auto; 
     text-align: left;
 }
+
+
+#MEmenu, #DJmenu, #ShowsMenu, #GearMenu {
+    padding: 0;
+	margin: 0;
+    position: absolute;
+	top: 115px;
+	display: none;
+	z-index: 999;
+	width: 225px;
+	background-color: #323234;	
+	
+    list-style-type: none;	
+}
+
+#MEmenu {top: 115px;}
+
+#DJmenu { left: 225px;}
+
+#ShowsMenu { left: 450px;}
+
+#GearMenu{ left: 675px;}
+
+#MEmenu li a, #DJmenu li a, #ShowsMenu li a, #GearMenu li a
+{
+    text-decoration: none;  
+	color: cyan;
+	font-size: 14px;
+}
+
+
+#MEmenu li:hover, #DJmenu li:hover, #ShowsMenu li:hover, #GearMenu li:hover
+{	
+    background: #49A3FF;
+}
+
+
+
