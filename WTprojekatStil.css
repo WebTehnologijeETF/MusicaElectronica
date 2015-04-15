@@ -695,6 +695,25 @@ div.centrirano table
 	font-size: 14px;
 }
 
+#MEmenu li, #DJmenu li, #ShowsMenu li, #GearMenu li{
+    display: block;
+    width: 100%;
+    float: left;
+    border-bottom: 1px solid rgba(0,0,0,.6);
+    border-top: 1px solid rgba(255,255,255,.2);
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 1px;
+}
+
+#MEmenu li:first-of-type, #DJmenu li:first-of-type, #ShowsMenu li:first-of-type, #GearMenu li:first-of-type{
+    border-top: none;
+}
+
+#MEmenu li:last-of-type, #DJmenu li:last-of-type, #ShowsMenu li:last-of-type, #GearMenu li:last-of-type{
+    border-bottom: none;
+}
+
 
 #MEmenu li:hover, #DJmenu li:hover, #ShowsMenu li:hover, #GearMenu li:hover
 {	
