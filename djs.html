@@ -17,41 +17,53 @@
             <a href="https://twitter.com/?lang=en" target="_blank"><div id="twitterlink"></div></a>
             <a href="https://plus.google.com/" target="_blank"><div id="googlepluslink"></div></a>
         </div>
-		<div id="meni">	   
-            <SCRIPT src = "Skripte.js" ></SCRIPT>		
+		<div id="meni">	  
+	
+			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>	
+			<SCRIPT src = "Skripte.js" ></SCRIPT>
 			
-			<a href="#"><div id="whatisME" onmouseover="mouseOverMenu1('MEmenu', 'whatisME')" onmouseout="mouseOutMenu1('MEmenu', 'whatisME')">About Musica Electronica</div></a>		
-			<a href="#"><div id="djs" onmouseover="mouseOverMenu1('DJmenu', 'djs')" onmouseout="mouseOutMenu1('DJmenu', 'djs')">DJs</div></a>
-			<a href="#"><div id="shows" onmouseover="mouseOverMenu1('ShowsMenu', 'shows')" onmouseout="mouseOutMenu1('ShowsMenu', 'shows')">Shows</div></a>
-			<a href="#"><div id = "gear" onmouseover="mouseOverMenu1('GearMenu', 'gear')" onmouseout="mouseOutMenu1('GearMenu', 'gear')">Gear</div></a>
+			<div id = "menuslide1" onmouseover="mouseOverGreyScale0('whatisME')" onmouseout="mouseOverGreyScale100('whatisME')">
+				<a href="#"><div id="whatisME">About Musica Electronica</div></a>
+				<ul id="MEmenu">
+					<li><a href="#">About us (in construction...)</a></li>
+					<li><a href="genre.html">About electronic music (working)</a></li>
+					<li><a href="#">Rest under construction</a></li>
+				</ul>
+			</div>
+			
+			<div id = "menuslide2" onmouseover="mouseOverGreyScale0('djs')" onmouseout="mouseOverGreyScale100('djs')">
+				<a href="#"><div id="djs">DJs</div></a>
+				<ul id="DJmenu">
+					<li><a href="#">What is a DJ (in construction...)</a></li>
+					<li><a href="#">Becoming a DJ (in construction...)</a></li>
+					<li><a href="djs.html">Top10 DJS 2014/2015 (working)</a></li>
+					<li><a href="#">Rest under construction</a></li>		
+				</ul> 
+			</div>
+			
+			<div id = "menuslide3" onmouseover="mouseOverGreyScale0('shows')" onmouseout="mouseOverGreyScale100('shows')">
+				<a href="#"><div id="shows">Shows</div></a>
+				<ul id="ShowsMenu">
+					<li><a href="shows.html">News (working)</a></li>
+					<li><a href="#">Top shows 2014/2015 (in construction...)</a></li>
+					<li><a href="#">Rest under construction</a></li>
+				</ul> 
+			</div>
+			
+			<div id = "menuslide4" onmouseover="mouseOverGreyScale0('gear')" onmouseout="mouseOverGreyScale100('gear')">
+				<a href="#"><div id="gear">Shows</div></a>
+				<ul id="GearMenu" onmouseover="mouseOverMenu1('GearMenu', 'gear')" onmouseout="mouseOutMenu1('GearMenu', 'gear')">
+					<li><a href="gear.html">News (working)</a></li>
+					<li><a href="#">Choosing right gear (in construction...)</a></li>
+					<li><a href="#">Rest under construction</a></li>
+				</ul>
+			</div>
+			
 			<a href="contact.html"><div id="contact">Contact</div></a>
 			<a href="partners.html"><div id="partners">Partners</div></a>
-			
-			<ul id="MEmenu" onmouseover="mouseOverMenu1('MEmenu', 'whatisME')" onmouseout="mouseOutMenu1('MEmenu', 'whatisME')">
-				<li><a href="#">About us (in construction...)</a></li>
-				<li><a href="genre.html">About electronic music (working)</a></li>
-				<li><a href="#">Rest under construction</a></li>
-			</ul> 
-			
-			<ul id="DJmenu" onmouseover="mouseOverMenu1('DJmenu', 'djs')" onmouseout="mouseOutMenu1('DJmenu', 'djs')">
-				<li><a href="#">What is a DJ (in construction...)</a></li>
-				<li><a href="#">Becoming a DJ (in construction...)</a></li>
-				<li><a href="djs.html">Top10 DJS 2014/2015 (working)</a></li>
-				<li><a href="#">Rest under construction</a></li>		
-			</ul> 
-			
-			<ul id="ShowsMenu" onmouseover="mouseOverMenu1('ShowsMenu', 'shows')" onmouseout="mouseOutMenu1('ShowsMenu', 'shows')">
-				<li><a href="shows.html">News (working)</a></li>
-				<li><a href="#">Top shows 2014/2015 (in construction...)</a></li>
-				<li><a href="#">Rest under construction</a></li>
-			</ul> 
-			
-			<ul id="GearMenu" onmouseover="mouseOverMenu1('GearMenu', 'gear')" onmouseout="mouseOutMenu1('GearMenu', 'gear')">
-				<li><a href="gear.html">News (working)</a></li>
-				<li><a href="#">Choosing right gear (in construction...)</a></li>
-				<li><a href="#">Rest under construction</a></li>
-			</ul>
+		           			
 		</div>
+		
 		<div id="main">   
 		<div class="centrirano">
 		    <table>
