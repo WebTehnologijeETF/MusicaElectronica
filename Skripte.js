@@ -84,7 +84,6 @@ function validacijaForme() {
             return false; 
       }
 	   
-	
 	var emailRegEx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 	if (!emailRegEx.test(document.forms["contactforma"]["contactEmail"].value)) {
 		document.getElementById('errorMail').innerHTML+="Wrong mail format";
@@ -92,9 +91,21 @@ function validacijaForme() {
 		return false;
 	}
 	
+	if (document.forms["contactforma"]["contactGrad"].value=="") {
+        document.getElementById('errorGrad').innerHTML+="City not entered";
+		document.getElementById('errorGrad').setAttribute("style", "background-image: url('inputerror.jpg');background-repeat: no-repeat;background-size: 25px 21px");
+            return false; 
+      }
+	  
+	  if (document.forms["contactforma"]["contactPB"].value=="") {
+        document.getElementById('errorPB').innerHTML+="Postal code not entered";
+		document.getElementById('errorPB').setAttribute("style", "background-image: url('inputerror.jpg');background-repeat: no-repeat;background-size: 25px 21px");
+            return false; 
+      }
+	
     
 	var x = document.forms["contactforma"]["contactPoruka"].value;
-	if (document.forms["contactforma"]["contactPoruka"].value.length<15) {
+	if (document.forms["contactforma"]["contactPoruka"].value.length<5) {
        document.getElementById('errorPoruka').innerHTML+="Message too short";
 	   document.getElementById('errorPoruka').setAttribute("style", "background-image: url('inputerror.jpg');background-repeat: no-repeat;background-size: 25px 21px");
        return false;
@@ -108,6 +119,7 @@ function validacijaForme() {
 	    document.getElementById('errorPoruka').setAttribute("style", "background-image: url('inputerror.jpg');background-repeat: no-repeat;background-size: 25px 21px");
         return false;
 	}
+	
 	return true;
 }
 
@@ -152,26 +164,24 @@ var ajaxValidacija = function(){
 
         if (xhr.readyState === 4 && xhr.status === 200) {
             if (jsonParse.hasOwnProperty("greska")) {
-            	if(jsonParse["greska"]==="Nepostojeće mjesto"){
-                	document.getElementById("errorPB").innerHTML="greska";
-                	alert('Postanski broj ne odgovara mjestu');
-					document.getElementById('contactPB').focus();
+            	if(jsonParse["greska"]==="Nepostojeći grad"){
+                	document.getElementById("errorGrad").innerHTML="Nepostojeći grad";
+					document.getElementById('errorGrad').setAttribute("style", "background-image: url('inputerror.jpg');background-repeat: no-repeat;background-size: 25px 21px");
+					document.getElementById('contactGrad').focus();
             	}
             	else if(jsonParse["greska"]==="Nepostojeći poštanski broj"){
-	                document.getElementById("errorPB").innerHTML="greska";
-                	alert('Postanski broj ne odgovara mjestu');
+	                document.getElementById("errorPB").innerHTML="Nepostojeći poštanski broj";
+					document.getElementById('errorPB').setAttribute("style", "background-image: url('inputerror.jpg');background-repeat: no-repeat;background-size: 25px 21px");
 					document.getElementById('contactPB').focus();
 	            }
 	            else if(jsonParse["greska"]==="Poštanski broj ne odgovara mjestu"){
-	                document.getElementById("errorPB").innerHTML="greska";
-                	alert('Postanski broj ne odgovara mjestu');
+	                document.getElementById("errorPB").innerHTML="Poštanski broj ne odgovara mjestu";
+					document.getElementById('errorPB').setAttribute("style", "background-image: url('inputerror.jpg');background-repeat: no-repeat;background-size: 25px 21px");
 					document.getElementById('contactPB').focus();
 	            }
                 
             } 
-            else {
-                document.getElementById("errorPB").innerHTML="ok";
-			
+            else {	
                 document.getElementById("contactSubmit").submit();
             }
         }
