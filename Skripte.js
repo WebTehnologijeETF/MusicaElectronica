@@ -149,11 +149,11 @@ function ucitaj(id) {
 
 
 
-var provjeraPodataka = function(){
-	ajaxValidacija();
+var provjeraForme = function(){
+	ajaxValidacijaForme();
 }
 
-var ajaxValidacija = function(){
+var ajaxValidacijaForme = function(){
 	
 	var grad =  document.getElementById('contactGrad').value;
     var postanskiBroj =  document.getElementById('contactPB').value;
