@@ -70,10 +70,16 @@ function validacijaForme() {
 	
 	document.getElementById('errorName').innerHTML="";
 	document.getElementById('errorMail').innerHTML="";
-	document.getElementById('errorWebsite').innerHTML="";
+	document.getElementById('errorGrad').innerHTML="";
 	document.getElementById('errorPoruka').innerHTML="";
 	if (document.forms["contactforma"]["contactIme"].value.length>20) {
         document.getElementById('errorName').innerHTML+="Name too long";
+		document.getElementById('errorName').setAttribute("style", "background-image: url('inputerror.jpg');background-repeat: no-repeat;background-size: 25px 21px");
+            return false; 
+      }
+	  
+	  if (document.forms["contactforma"]["contactIme"].value=="") {
+        document.getElementById('errorName').innerHTML+="Name not entered";
 		document.getElementById('errorName').setAttribute("style", "background-image: url('inputerror.jpg');background-repeat: no-repeat;background-size: 25px 21px");
             return false; 
       }
@@ -114,3 +120,63 @@ function mouseOverGreyScale100(id){
     var x = document.getElementById(id);
     x.setAttribute("style","filter:grayscale(" + 100 + "%)");
 }
+
+
+function ucitaj(id) {
+    var ajax = new XMLHttpRequest();
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            document.getElementById("main").innerHTML = ajax.responseText;
+            refreshPage();
+        }
+    };
+    ajax.open("GET", id + ".html", true);
+    ajax.send();
+}
+
+
+
+var provjeraPodataka = function(){
+	ajaxValidacija();
+}
+
+var ajaxValidacija = function(){
+	
+	var grad =  document.getElementById('contactGrad').value;
+    var postanskiBroj =  document.getElementById('contactPB').value;
+	var xhr = new XMLHttpRequest();
+	
+	xhr.onreadystatechange=function(){
+        var jsonParse=JSON.parse(xhr.responseText);
+
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            if (jsonParse.hasOwnProperty("greska")) {
+            	if(jsonParse["greska"]==="Nepostojeće mjesto"){
+                	document.getElementById("errorPB").innerHTML="greska";
+                	alert('Postanski broj ne odgovara mjestu');
+					document.getElementById('contactPB').focus();
+            	}
+            	else if(jsonParse["greska"]==="Nepostojeći poštanski broj"){
+	                document.getElementById("errorPB").innerHTML="greska";
+                	alert('Postanski broj ne odgovara mjestu');
+					document.getElementById('contactPB').focus();
+	            }
+	            else if(jsonParse["greska"]==="Poštanski broj ne odgovara mjestu"){
+	                document.getElementById("errorPB").innerHTML="greska";
+                	alert('Postanski broj ne odgovara mjestu');
+					document.getElementById('contactPB').focus();
+	            }
+                
+            } 
+            else {
+                document.getElementById("errorPB").innerHTML="ok";
+			
+                document.getElementById("contactSubmit").submit();
+            }
+        }
+    }
+	xhr.open("GET", "http://zamger.etf.unsa.ba/wt/postanskiBroj.php?mjesto="+grad+"&postanskiBroj="+postanskiBroj, true);
+	xhr.send();
+}
+
