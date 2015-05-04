@@ -72,6 +72,7 @@ function validacijaForme() {
 	document.getElementById('errorMail').innerHTML="";
 	document.getElementById('errorGrad').innerHTML="";
 	document.getElementById('errorPoruka').innerHTML="";
+	document.getElementById('errorPB').innerHTML="";
 	if (document.forms["contactforma"]["contactIme"].value.length>20) {
         document.getElementById('errorName').innerHTML+="Name too long";
 		document.getElementById('errorName').setAttribute("style", "background-image: url('inputerror.jpg');background-repeat: no-repeat;background-size: 25px 21px");
@@ -157,12 +158,12 @@ var ajaxValidacijaForme = function(){
 	
 	var grad =  document.getElementById('contactGrad').value;
     var postanskiBroj =  document.getElementById('contactPB').value;
-	var xhr = new XMLHttpRequest();
+	var x = new XMLHttpRequest();
 	
-	xhr.onreadystatechange=function(){
-        var jsonParse=JSON.parse(xhr.responseText);
+	x.onreadystatechange=function(){
+        var jsonParse=JSON.parse(x.responseText);
 
-        if (xhr.readyState === 4 && xhr.status === 200) {
+        if (x.readyState === 4 && x.status === 200) {
             if (jsonParse.hasOwnProperty("greska")) {
             	if(jsonParse["greska"]==="Nepostojeći grad"){
                 	document.getElementById("errorGrad").innerHTML="Nepostojeći grad";
@@ -175,18 +176,20 @@ var ajaxValidacijaForme = function(){
 					document.getElementById('contactPB').focus();
 	            }
 	            else if(jsonParse["greska"]==="Poštanski broj ne odgovara mjestu"){
-	                document.getElementById("errorPB").innerHTML="Poštanski broj ne odgovara mjestu";
+	                document.getElementById("errorPB").innerHTML="Poštanski broj ne odgovara";
 					document.getElementById('errorPB').setAttribute("style", "background-image: url('inputerror.jpg');background-repeat: no-repeat;background-size: 25px 21px");
 					document.getElementById('contactPB').focus();
 	            }
                 
             } 
             else {	
+			    document.getElementById("errorPB").innerHTML="Grad i poštanski broj uredu";
+				document.getElementById('errorPB').setAttribute("style", "background-image: url('inputcorrect.png');background-repeat: no-repeat;background-size: 25px 21px");
                 document.getElementById("contactSubmit").submit();
             }
         }
     }
-	xhr.open("GET", "http://zamger.etf.unsa.ba/wt/postanskiBroj.php?mjesto="+grad+"&postanskiBroj="+postanskiBroj, true);
-	xhr.send();
+	x.open("GET", "http://zamger.etf.unsa.ba/wt/postanskiBroj.php?mjesto="+grad+"&postanskiBroj="+postanskiBroj, true);
+	x.send();
 }
 
