@@ -165,7 +165,7 @@ var ajaxValidacijaForme = function(){
 
         if (x.readyState === 4 && x.status === 200) {
             if (jsonParse.hasOwnProperty("greska")) {
-            	if(jsonParse["greska"]==="Nepostojeći grad"){
+            	if(jsonParse["greska"]==="Nepostojeće mjesto"){
                 	document.getElementById("errorGrad").innerHTML="Nepostojeći grad";
 					document.getElementById('errorGrad').setAttribute("style", "background-image: url('inputerror.jpg');background-repeat: no-repeat;background-size: 25px 21px");
 					document.getElementById('contactGrad').focus();
