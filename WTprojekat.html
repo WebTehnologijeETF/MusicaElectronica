@@ -20,12 +20,11 @@
 		
 	    <div id="meni">	  
 	
-			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>	
 			<SCRIPT src = "Skripte.js" ></SCRIPT>
 			
 			<div id = "menuslide1" onmouseover="mouseOverGreyScale0('whatisME')" onmouseout="mouseOverGreyScale100('whatisME')">
-				<a href="#"><div id="whatisME">About Musica Electronica</div></a>
-				<ul id="MEmenu">
+				<a href="#"  onmouseover="mouseOverMenu1('MEmenu', 'whatisME')" onmouseout="mouseOutMenu1('MEmenu', 'whatisME')"><div id="whatisME">About Musica Electronica</div></a>
+				<ul id="MEmenu" onmouseover="mouseOverMenu('MEmenu')" onmouseout="mouseOutMenu('MEmenu')">
 					<li><a href="#">About us (in construction...)</a></li>
 					<li><a onclick = "ucitaj('genre')">About electronic music (working)</a></li>
 					<li><a href="#">Rest under construction</a></li>
@@ -33,8 +32,8 @@
 			</div>
 			
 			<div id = "menuslide2" onmouseover="mouseOverGreyScale0('djs')" onmouseout="mouseOverGreyScale100('djs')">
-				<a href="#"><div id="djs">DJs</div></a>
-				<ul id="DJmenu">
+				<a href="#" onmouseover="mouseOverMenu1('DJmenu', 'djs')" onmouseout="mouseOutMenu1('DJmenu', 'djs')"><div id="djs">DJs</div></a>
+				<ul id="DJmenu" onmouseover="mouseOverMenu('DJmenu')" onmouseout="mouseOutMenu('DJmenu')">
 					<li><a href="#">What is a DJ (in construction...)</a></li>
 					<li><a href="#">Becoming a DJ (in construction...)</a></li>
 					<li><a onclick = "ucitaj('djs')">Top10 DJS 2014/2015 (working)</a></li>
@@ -43,8 +42,8 @@
 			</div>
 			
 			<div id = "menuslide3" onmouseover="mouseOverGreyScale0('shows')" onmouseout="mouseOverGreyScale100('shows')">
-				<a href="#"><div id="shows">Shows</div></a>
-				<ul id="ShowsMenu">
+				<a href="#" onmouseover="mouseOverMenu1('ShowsMenu', 'shows')" onmouseout="mouseOutMenu1('ShowsMenu', 'shows')"><div id="shows">Shows</div></a>
+				<ul id="ShowsMenu" onmouseover="mouseOverMenu('ShowsMenu')" onmouseout="mouseOutMenu('ShowsMenu')">
 					<li><a onclick = "ucitaj('shows')">News (working)</a></li>
 					<li><a href="#">Top shows 2014/2015 (in construction...)</a></li>
 					<li><a href="#">Rest under construction</a></li>
@@ -52,8 +51,8 @@
 			</div>
 			
 			<div id = "menuslide4" onmouseover="mouseOverGreyScale0('gear')" onmouseout="mouseOverGreyScale100('gear')">
-				<a href="#"><div id="gear">Gear</div></a>
-				<ul id="GearMenu">
+				<a href="#" onmouseover="mouseOverMenu1('GearMenu', 'gear')" onmouseout="mouseOutMenu1('GearMenu', 'gear')"><div id="gear">Gear</div></a>
+				<ul id="GearMenu" onmouseover="mouseOverMenu('GearMenu')" onmouseout="mouseOutMenu('GearMenu')">
 					<li><a onclick = "ucitaj('gear')">News (working)</a></li>
 					<li><a href="#">Choosing right gear (in construction...)</a></li>
 					<li><a href="#">Rest under construction</a></li>
