@@ -10,7 +10,7 @@
 <BODY>
     <div id="okvir">
         <div id="zaglavlje">
-            <a href="WTprojekat.php"><div id="logo">&nbsp;</div></a>
+            <a href="index.php"><div id="logo">&nbsp;</div></a>
 			<a href="https://www.youtube.com/" target="_blank"><div id="ytlink"></div></a>
 			<div id="zaglavljeDivider"></div>
             <a href="https://www.facebook.com/?_rdr" target="_blank"><div id="fblink"></div></a>
