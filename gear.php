@@ -22,11 +22,11 @@
 		<div id="gearvijest6"><div id="gearimagevijest6"></div><span class="naslovVijesti">Pioneer PLX-1000 Turntable</span><p>The new Pioneer PLX-1000 analog DJ turntables have the similar layout and basic
 		features of the iconic Technics 1200’s that DJ’s<a href="">...more</a>
 		<br><span class="bywho">28.03.2015 | by Sharky</span></p></div>
-		<div id="video-container">
+		<div id="video-container" style= "top:-604px">
 		     <span class="videonaslov">Song of the day</span><p>
              <iframe width="397" height="250" src="https://www.youtube.com/embed/yYwLLyy-hZQ" allowfullscreen></iframe></p>
         </div>	
-		<div id="listapartners">
+		<div id="listapartners" style= "top:-595px">
 		Partners of Musica Electronica:
 				<ul class="moja_lista">
 				    <li><a href="http://www.bhtelecom.ba" target="_blank">BH Telecom</a></li>

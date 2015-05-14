@@ -10,7 +10,7 @@
 <BODY>
     <div id="okvir">
         <div id="zaglavlje">
-            <a href="WTprojekat.html"><div id="logo">&nbsp;</div></a>
+            <a href="WTprojekat.php"><div id="logo">&nbsp;</div></a>
 			<a href="https://www.youtube.com/" target="_blank"><div id="ytlink"></div></a>
 			<div id="zaglavljeDivider"></div>
             <a href="https://www.facebook.com/?_rdr" target="_blank"><div id="fblink"></div></a>
@@ -64,26 +64,100 @@
 								
 		</div>
 		
-		<div id="main">
-		<div id="glavnaVijest"><div id="imageGlavnaVijest"></div><span id="naslovGlavnaVijest">Mike Vale in Cinemas Sloga - 27.03.2015</span>
-		<p>On friday, 27th of March 2015. beginning at 11pm, famous Sloveninan house music DJ and producer, Mike Vale, held a concert
-		in Sarajevo's most famous nightclub, Cinemas Sloga, in front of 500 of his fans. Several guest DJs from Sarajevo also made their
-		appearance: Hator Master, Dizzy Dee, Papa S and a few others<a href="">...more</a><br><span class="bywho">28.03.2015 | by Sharky</span></p></div>
-		<div id="vijest2"><div id="imagevijest7"></div><span class="naslovVijesti">Tickets are in sale for Tomorrowland 2015</span><p>The world's largest 
-		house music festival, Tomorrowland, will this year be held in Brasil in May, Belgium in July and USA<a href="">...more</a><br><span class="bywho">28.03.2015 | by Sharky</span></p></div>
-		<div id="vijest7"><div id="imagevijest3"></div><span class="naslovVijesti">New Epsilon INNO-PROPAK</span><p>The Epsilon INNO-PROPAK is an excellent starting point for DJ's who want a 
-		professional Digital/Analog vinyl control<a href="">...more</a><br><span class="bywho">28.03.2015 | by ChosenOne</span></p></div>
-		<div id="vijest4"><div id="imagevijest4"></div><span class="naslovVijesti">Hardwell Announces Hakkasan Residency in Las Vegas</span><p>Adding to an 
-		already-stacked list of resident DJs that includes Calvin Harris, Steve Aoki<a href="">...more</a><br><span class="bywho">28.03.2015 | by ChosenOne</span></p></div>
-		<div id="vijest5"><div id="imagevijest5"></div><span class="naslovVijesti">Dyro launches new radioshow</span><p>One of the standout moments of Dyro last 
-		year was the arrival of his label WOLV, which immediately won accolades from the scenes tastemakers for a string<a href="">...more</a><br><span class="bywho">28.03.2015 | by Webster</span></p></div>
-		<div id="vijest6"><div id="imagevijest6"></div><span class="naslovVijesti">Musica electronica presents the new website</span><p>We are proud to present our new website.	
-		<br><span class="bywho">28.03.2015 | by Sharky</span></p></div>
-		<div id="video-container">
+		<div id="main">	
+<?php	
+        $folder = glob('novosti/*.txt', GLOB_BRACE);
+        $fajlovi = array();
+        foreach($folder as $file) 
+		{
+            $fajl = file($file);
+            array_push($fajlovi, $fajl);
+        }
+
+		
+		for ($i=0; $i<count($fajlovi); $i++)
+		{
+			for ($j=0; $j<count($fajlovi); $j++)
+			{
+				$datum1 = strtotime($fajlovi[$i][0]);
+				$datum2 = strtotime($fajlovi[$j][0]);
+				if ($datum1 < $datum2)
+				{
+					$pomocna = $fajlovi[$i];
+					$fajlovi[i] = $fajlovi[$j];
+					$fajlovi[j] = $pomocna;
+				}
+			}
+		}
+		
+		$first = true;
+		foreach($fajlovi as $file)
+		{
+			$datumivrijeme=$file[0];
+			$autor=$file[1];
+			$naslov=$file[2];
+			$slikanovosti=$file[3];
+			$tekstnovost="";
+			$tekstsirebool=false;
+			$tekstsire="";
+			$linkvise="";
+			$tekst="";
+			$tekst1=array();
+			$postojivise=true;
+			
+			for($i = 4; $i < count($file); $i++) 
+			{
+				if(trim($file[$i]) === "--") 
+				{
+					$postojivise = false;
+				}
+				if($postojivise) 
+				{
+					$tekstnovost = $tekstnovost." ".$file[$i];
+				}
+				else 
+				{
+					if(trim($file[$i]) != "--")
+					{
+						$tekstsirebool = true;
+						$tekstsire = $tekstsire." ".$file[$i];
+						$linkvise="...more";
+					}
+				}
+			}
+        
+			
+			$DiV = explode(' ', $datumivrijeme);
+			
+			$naslov = strtolower($naslov);
+            $naslov[0] = strtoupper($naslov[0]);
+			
+			if ($first)
+			{
+				print ("<div id = 'glavnaVijest'>
+				<img src ='".htmlentities($slikanovosti, ENT_QUOTES)."' height:'200' width:'150' />
+				<h3>".htmlentities($naslov, ENT_QUOTES)."</h3>
+				<p> ".$tekstnovost."<a style='color: blue;'>".$linkvise."</a></p>
+				<p style='color: cyan;'>" .$DiV[0]. " | by ".htmlentities($autor, ENT_QUOTES)."</p></div> ");
+				$first = false;		
+			}
+			else {
+			$k=2;
+			print ("<div id = 'vijest".$k."'>
+			 <img src ='".htmlentities($slikanovosti, ENT_QUOTES)."' height:'200' width:'150' />
+			 <h3>".htmlentities($naslov, ENT_QUOTES)."</h3>
+			 <p> ".$tekstnovost."<a style='color: blue;'>".$linkvise."</a></p>
+			 <p style='color: cyan;'>" .$DiV[0]. " | by ".htmlentities($autor, ENT_QUOTES)."</p></div> ");
+			 
+			$k=$k+1;}
+	
+		}
+		?>		
+		<div id="video-container" style= "top:5px">
 		     <span class="videonaslov">Song of the day</span><p>
              <iframe width="397" height="250" src="https://www.youtube.com/embed/yYwLLyy-hZQ" allowfullscreen></iframe></p>
         </div>	
-		<div id="listapartners">
+		<div id="listapartners" style= "top:40px">
 		Partners of Musica Electronica:
 				<ul class="moja_lista">
 				    <li><a href="http://www.bhtelecom.ba" target="_blank">BH Telecom</a></li>
@@ -92,6 +166,7 @@
 					<li><a href="http://www.sensation.com/landing/" target="_blank">Sensation</a></li>
 				</ul>
 		</div>
+			
 		</div>
 		<div id="podnozje">
 		    &copy; 2014/2015 Haris &#352;emi&#263; All Rights Reserved

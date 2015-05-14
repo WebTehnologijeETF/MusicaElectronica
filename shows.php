@@ -22,11 +22,11 @@
 		<div id="showsvijest6"><div id="showsimagevijest6"></div><span class="naslovVijesti">Tiesto coming to Guatemala</span><p>Tiesto surprised his fans from Guatemala when he announced
         he will be playing in Empire Music Festival that will be held in Guatemala city	<a href="">...more</a>
 		<br><span class="bywho">28.03.2015 | by Sharky</span></p></div>
-		<div id="video-container">
+		<div id="video-container" style= "top:-604px">
 		     <span class="videonaslov">Song of the day</span><p>
              <iframe width="397" height="250" src="https://www.youtube.com/embed/yYwLLyy-hZQ" allowfullscreen></iframe></p>
         </div>	
-		<div id="listapartners">
+		<div id="listapartners" style= "top:-595px">
 		Partners of Musica Electronica:
 				<ul class="moja_lista">
 				    <li><a href="http://www.bhtelecom.ba" target="_blank">BH Telecom</a></li>

@@ -268,7 +268,8 @@ body {
 	margin-right: 17%;
 	float: right;
 	position: relative;
-	top: -604px;
+	top: 561px;
+	right:1px;
 	border-bottom: 1px solid #a1a1a1;
 }
 
@@ -586,7 +587,8 @@ caption
 	padding-right: 0;
 	float: right;
 	position: relative;
-	top: -595px;
+	top: 200px;
+	right:10px;
 	border-bottom: 1px solid #a1a1a1;
 }
 

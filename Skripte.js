@@ -101,7 +101,7 @@ function ucitaj(id) {
             refreshPage();
         }
     };
-    ajax.open("GET", id + ".html", true);
+    ajax.open("GET", id + ".php", true);
     ajax.send();
 }
 
