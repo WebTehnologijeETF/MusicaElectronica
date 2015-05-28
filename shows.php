@@ -10,31 +10,97 @@
 <BODY>
 		
 		
-		<div id="showsglavnaVijest"><div id="showsimageGlavnaVijest"></div><span id="naslovGlavnaVijest">Tickets are in sale for Tomorrowland 2015</span>
-		<p>The world's largest house music festival, Tomorrowland, will this year be held in Brasil in May, Belgium in July and USA<a href="">...more</a><br><span class="bywho">28.03.2015 | by Sharky</span></p></div>
-		<div id="showsvijest2"><div id="showsimagevijest7"></div><span class="naslovVijesti">Sensation 2015</span><p>All info about the event and tickets pricing here<a href="">...more</a><br><span class="bywho">28.03.2015 | by Sharky</span></p></div>
-		<div id="showsvijest7"><div id="showsimagevijest3"></div><span class="naslovVijesti">Avicii 31.03.2015 in Las Vegas</span><p>On tuesday, 31.03.2015, Avicii will be a host
-		to another in a row of his this year's Las Vegas gigs. The number of people expected to visit<a href="">...more</a><br><span class="bywho">28.03.2015 | by ChosenOne</span></p></div>
-		<div id="showsvijest4"><div id="showsimagevijest4"></div><span class="naslovVijesti">Hardwell Announces Hakkasan Residency in Las Vegas</span><p>Adding to an 
-		already-stacked list of resident DJs that includes Calvin Harris, Steve Aoki<a href="">...more</a><br><span class="bywho">28.03.2015 | by ChosenOne</span></p></div>
-		<div id="showsvijest5"><div id="showsimagevijest5"></div><span class="naslovVijesti">Dyro launches new radioshow</span><p>One of the standout moments of Dyro last 
-		year was the arrival of his label WOLV, which immediately won accolades from the scenes tastemakers for a string<a href="">...more</a><br><span class="bywho">28.03.2015 | by Webster</span></p></div>
-		<div id="showsvijest6"><div id="showsimagevijest6"></div><span class="naslovVijesti">Tiesto coming to Guatemala</span><p>Tiesto surprised his fans from Guatemala when he announced
-        he will be playing in Empire Music Festival that will be held in Guatemala city	<a href="">...more</a>
-		<br><span class="bywho">28.03.2015 | by Sharky</span></p></div>
-		<div id="video-container" style= "top:-604px">
-		     <span class="videonaslov">Song of the day</span><p>
-             <iframe width="397" height="250" src="https://www.youtube.com/embed/yYwLLyy-hZQ" allowfullscreen></iframe></p>
-        </div>	
-		<div id="listapartners" style= "top:-595px">
-		Partners of Musica Electronica:
-				<ul class="moja_lista">
-				    <li><a href="http://www.bhtelecom.ba" target="_blank">BH Telecom</a></li>
-					<li><a href="http://www.tomorrowland.com/global-splash/" target="_blank">Tomorrowland</a></li>
-					<li><a href="http://djmag.com/" target="_blank">DJ Mag</a></li>
-					<li><a href="http://www.sensation.com/landing/" target="_blank">Sensation</a></li>
+		<?php	
+        $veza = new PDO("mysql:dbname=me;host=localhost;charset=utf8", "meuser", "bigbangkamehameha1");
+		$veza->exec("set names utf8");
+		
+		$vijest = $veza->query("select id, naslov, tekst, autor, UNIX_TIMESTAMP(vrijeme) vrijeme2, tip, slika from vijesti order by vrijeme desc");
+						
+		if (isset($_GET['id']))
+		{
+			$vijest = $veza->query("select id, naslov, tekst, autor, UNIX_TIMESTAMP(vrijeme) vrijeme2, tip, slika from vijesti order by vrijeme desc");
+			$komentar = $veza->query("select id, vijest, tekst, UNIX_TIMESTAMP(vrijeme) vrijeme3, autor from komentari order by vrijeme desc");
+			foreach ($vijest as $vijest1) 
+			{
+				if ($vijest1['id'] == $_GET['id'])
+				{
+				
+					print "<img src ='".$vijest1['slika']."' height:'300' width:'300' /><h1>".$vijest1['naslov']."</h1><small> ".$vijest1['autor']."</small><p> ".$vijest1['tekst']."</p><small> "
+					.date("d.m.Y. (h:i)", $vijest1['vrijeme2'])."</small><br><br><br>";
+					foreach ($komentar as $komentar1)
+					{
+						if ($komentar1['vijest'] == $_GET['id'])
+						{
+							print "<small>".$komentar1['autor']."</small><br>".$komentar1['tekst']."<small><br> ".date("d.m.Y. (h:i)", $komentar1['vrijeme3'])."</small><br><br>";
+						}
+					}
+			
+					print "<form method='post' action=' '><textarea name='komentar' id = 'komentar' placeholder='Comment' rows='10'></textarea><br>
+					<input type='submit' name='submit' value ='Submit comment'/></form>";
+					if(isset($_POST['submit']))
+					{
+						$tekst = $_POST['komentar'];
+						if (isset($_SESSION['username']))
+							$SQL = $veza->query("INSERT INTO komentari SET vijest=".$_GET['id'].", tekst='$tekst', autor='$username'");	
+						else 
+							$SQL = $veza->query("INSERT INTO komentari SET vijest=".$_GET['id'].", tekst='$tekst', autor='Anonymous'");	
+							header("location: index.php?id=".$vijest1['id']);				
+					}
+				}
+			}		 
+		}
+		
+		
+		else 
+		{
+			$vijest = $veza->query("select id, naslov, tekst, autor, UNIX_TIMESTAMP(vrijeme) vrijeme2, tip, slika from vijesti order by vrijeme desc");
+			$komentar = $veza->query("select id, vijest, tekst, UNIX_TIMESTAMP(vrijeme) vrijeme3, autor from komentari order by vrijeme desc");
+			$first = true;
+			foreach($vijest as $vijest1)
+			{	
+			    if ($vijest1['tip']=="shows")
+				{
+				$rezultat1 = $veza->query("SELECT COUNT(*) FROM komentari WHERE vijest=$vijest1[id]");
+				$rezultat2 = $rezultat1->fetchColumn();
+				if ($first)
+				{
+					print ("<div id = 'glavnaVijest'>
+					<img src ='".$vijest1['slika']."' style='height:250px; width:250px' />
+					<h3>".$vijest1['naslov']."</h3>
+					<p> ".implode(' ', array_slice(explode(' ', $vijest1['tekst']), 0, 30))."<a href='index.php?id=".$vijest1['id']."'>...more</a></p>
+					<p style='color: cyan;'>" .date("d.m.Y. ", $vijest1['vrijeme2']). " | by ".$vijest1['autor']."</p></div> ");
+					$first = false;		
+				}
+				else 
+				{
+					$k=2;
+					print ("<div id = 'vijest".$k."'>
+					<img src ='".$vijest1['slika']."' style='height:150px; width:150px' />
+					<h3>".$vijest1['naslov']."</h3>
+					<p> ".implode(' ', array_slice(explode(' ', $vijest1['tekst']), 0, 14))."<a href='index.php?id=".$vijest1['id']."'>...more</a></p>
+					<p style='color: cyan;'>" .date("d.m.Y. ", $vijest1['vrijeme2']). " | by ".$vijest1['autor']."</p></div> ");
+				
+					$k=$k+1;
+				}
+	
+			}
+			}
+			print ("<div id='video-container' style= 'top:5px'>
+		     <span class='videonaslov'>Song of the day</span><p>
+             <iframe width='397' height='250' src='https://www.youtube.com/embed/yYwLLyy-hZQ' allowfullscreen></iframe></p>
+			</div>	
+			<div id='listapartners' style= 'top:40px'>
+				Partners of Musica Electronica:
+				<ul class='moja_lista'>
+				    <li><a href='http://www.bhtelecom.ba' target='_blank'>BH Telecom</a></li>
+					<li><a href='http://www.tomorrowland.com/global-splash/' target='_blank'>Tomorrowland</a></li>
+					<li><a href='http://djmag.com/' target='_blank'>DJ Mag</a></li>
+					<li><a href='http://www.sensation.com/landing/' target='_blank'>Sensation</a></li>
 				</ul>
-		</div>
+			</div>");
+		}
+		?>	
+		
 		
 </BODY>
 </HTML>
