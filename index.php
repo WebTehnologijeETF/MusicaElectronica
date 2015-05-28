@@ -10,6 +10,49 @@
 <BODY>
     <div id="okvir">
         <div id="zaglavlje">
+		
+			<?php	
+		$veza = new PDO("mysql:dbname=me;host=localhost;charset=utf8", "meuser", "bigbangkamehameha1");
+		$veza->exec("set names utf8");
+		
+		$vijest = $veza->query("select id, naslov, tekst, autor, UNIX_TIMESTAMP(vrijeme) vrijeme2, tip, slika from vijesti order by vrijeme desc");
+
+		session_start();		
+		if (isset($_SESSION['username']))
+		{
+			$username = $_SESSION['username'];
+			print "<div id='user' style='position:absolute; top:1.5%; right:25%;'><form method='post'>Logged in as ".$username."
+			<input type='submit' name='logout' value ='Logout'/></form></div>";
+		}
+        
+		
+		else if (isset($_REQUEST['username'])) 
+		{
+				$username = $_REQUEST['username'];
+				$password = $_REQUEST['password'];
+				$upit = $veza->prepare("SELECT * FROM korisnici WHERE username=? and password=?");
+				$upit->execute(array($username,$password));
+		
+			    $_SESSION['username'] = $username;		
+                header("location: index.php");				
+		}
+		
+		
+		
+		else
+		{
+			   print "<div id='loginn' style='position:absolute; top:1.5%; right:23%;'>
+			   <form method='post' action =''><input type = 'text' name = 'username' id='username' placeholder='username'>
+			   <input type = 'text' name = 'password' id='password' placeholder='password'>
+			   <input type='submit' name='login' value ='Login'/></form></div>";
+		}
+		
+		if (isset($_POST['logout']))
+		{
+			session_unset();
+			header("location: index.php");	
+		}
+		?>
             <a href="index.php"><div id="logo">&nbsp;</div></a>
 			<a href="https://www.youtube.com/" target="_blank"><div id="ytlink"></div></a>
 			<div id="zaglavljeDivider"></div>
@@ -65,107 +108,94 @@
 		</div>
 		
 		<div id="main">	
-<?php	
-        $folder = glob('novosti/*.txt', GLOB_BRACE);
-        $fajlovi = array();
-        foreach($folder as $file) 
-		{
-            $fajl = file($file);
-            array_push($fajlovi, $fajl);
-        }
-
+		<?php	
+        $veza = new PDO("mysql:dbname=me;host=localhost;charset=utf8", "meuser", "bigbangkamehameha1");
+		$veza->exec("set names utf8");
 		
-		for ($i=0; $i<count($fajlovi); $i++)
+		$vijest = $veza->query("select id, naslov, tekst, autor, UNIX_TIMESTAMP(vrijeme) vrijeme2, tip, slika from vijesti order by vrijeme desc");
+						
+		if (isset($_GET['id']))
 		{
-			for ($j=0; $j<count($fajlovi); $j++)
+			$vijest = $veza->query("select id, naslov, tekst, autor, UNIX_TIMESTAMP(vrijeme) vrijeme2, tip, slika from vijesti order by vrijeme desc");
+			$komentar = $veza->query("select id, vijest, tekst, UNIX_TIMESTAMP(vrijeme) vrijeme3, autor from komentari order by vrijeme desc");
+			foreach ($vijest as $vijest1) 
 			{
-				$datum1 = strtotime($fajlovi[$i][0]);
-				$datum2 = strtotime($fajlovi[$j][0]);
-				if ($datum1 < $datum2)
+				if ($vijest1['id'] == $_GET['id'])
 				{
-					$pomocna = $fajlovi[$i];
-					$fajlovi[i] = $fajlovi[$j];
-					$fajlovi[j] = $pomocna;
+				
+					print "<img src ='".$vijest1['slika']."' height:'300' width:'300' /><h1>".$vijest1['naslov']."</h1><small> ".$vijest1['autor']."</small><p> ".$vijest1['tekst']."</p><small> "
+					.date("d.m.Y. (h:i)", $vijest1['vrijeme2'])."</small><br><br><br>";
+					foreach ($komentar as $komentar1)
+					{
+						if ($komentar1['vijest'] == $_GET['id'])
+						{
+							print "<small>".$komentar1['autor']."</small><br>".$komentar1['tekst']."<small><br> ".date("d.m.Y. (h:i)", $komentar1['vrijeme3'])."</small><br><br>";
+						}
+					}
+			
+					print "<form method='post' action=' '><textarea name='komentar' id = 'komentar' placeholder='Comment' rows='10'></textarea><br>
+					<input type='submit' name='submit' value ='Submit comment'/></form>";
+					if(isset($_POST['submit']))
+					{
+						$tekst = $_POST['komentar'];
+						if (isset($_SESSION['username']))
+							$SQL = $veza->query("INSERT INTO komentari SET vijest=".$_GET['id'].", tekst='$tekst', autor='$username'");	
+						else 
+							$SQL = $veza->query("INSERT INTO komentari SET vijest=".$_GET['id'].", tekst='$tekst', autor='Anonymous'");	
+							header("location: index.php?id=".$vijest1['id']);				
+					}
 				}
-			}
+			}		 
 		}
 		
-		$first = true;
-		foreach($fajlovi as $file)
+		
+		else 
 		{
-			$datumivrijeme=$file[0];
-			$autor=$file[1];
-			$naslov=$file[2];
-			$slikanovosti=$file[3];
-			$tekstnovost="";
-			$tekstsirebool=false;
-			$tekstsire="";
-			$linkvise="";
-			$tekst="";
-			$tekst1=array();
-			$postojivise=true;
-			
-			for($i = 4; $i < count($file); $i++) 
-			{
-				if(trim($file[$i]) === "--") 
+			$vijest = $veza->query("select id, naslov, tekst, autor, UNIX_TIMESTAMP(vrijeme) vrijeme2, tip, slika from vijesti order by vrijeme desc");
+			$komentar = $veza->query("select id, vijest, tekst, UNIX_TIMESTAMP(vrijeme) vrijeme3, autor from komentari order by vrijeme desc");
+			$first = true;
+			foreach($vijest as $vijest1)
+			{	
+				$rezultat1 = $veza->query("SELECT COUNT(*) FROM komentari WHERE vijest=$vijest1[id]");
+				$rezultat2 = $rezultat1->fetchColumn();
+				if ($first)
 				{
-					$postojivise = false;
-				}
-				if($postojivise) 
-				{
-					$tekstnovost = $tekstnovost." ".$file[$i];
+					print ("<div id = 'glavnaVijest'>
+					<img src ='".$vijest1['slika']."' height:'200' width:'150' />
+					<h3>".$vijest1['naslov']."</h3>
+					<p> ". $vijest1['tekst']."<a href='index.php?id=".$vijest1['id']."'>...more</a></p>
+					<p style='color: cyan;'>" .date("d.m.Y. ", $vijest1['vrijeme2']). " | by ".$vijest1['autor']."</p></div> ");
+					$first = false;		
 				}
 				else 
 				{
-					if(trim($file[$i]) != "--")
-					{
-						$tekstsirebool = true;
-						$tekstsire = $tekstsire." ".$file[$i];
-						$linkvise="...more";
-					}
+					$k=2;
+					print ("<div id = 'vijest".$k."'>
+					<img src ='".$vijest1['slika']."' style='height:150px; width:150px' />
+					<h3>".$vijest1['naslov']."</h3>
+					<p> ".implode(' ', array_slice(explode(' ', $vijest1['tekst']), 0, 14))."<a href='index.php?id=".$vijest1['id']."'>...more</a></p>
+					<p style='color: cyan;'>" .date("d.m.Y. ", $vijest1['vrijeme2']). " | by ".$vijest1['autor']."</p></div> ");
+				
+					$k=$k+1;
 				}
-			}
-        
-			
-			$DiV = explode(' ', $datumivrijeme);
-			
-			$naslov = strtolower($naslov);
-            $naslov[0] = strtoupper($naslov[0]);
-			
-			if ($first)
-			{
-				print ("<div id = 'glavnaVijest'>
-				<img src ='".htmlentities($slikanovosti, ENT_QUOTES)."' height:'200' width:'150' />
-				<h3>".htmlentities($naslov, ENT_QUOTES)."</h3>
-				<p> ".$tekstnovost."<a style='color: blue;'>".$linkvise."</a></p>
-				<p style='color: cyan;'>" .$DiV[0]. " | by ".htmlentities($autor, ENT_QUOTES)."</p></div> ");
-				$first = false;		
-			}
-			else {
-			$k=2;
-			print ("<div id = 'vijest".$k."'>
-			 <img src ='".htmlentities($slikanovosti, ENT_QUOTES)."' height:'200' width:'150' />
-			 <h3>".htmlentities($naslov, ENT_QUOTES)."</h3>
-			 <p> ".$tekstnovost."<a style='color: blue;'>".$linkvise."</a></p>
-			 <p style='color: cyan;'>" .$DiV[0]. " | by ".htmlentities($autor, ENT_QUOTES)."</p></div> ");
-			 
-			$k=$k+1;}
 	
+			}
+			print ("<div id='video-container' style= 'top:5px'>
+		     <span class='videonaslov'>Song of the day</span><p>
+             <iframe width='397' height='250' src='https://www.youtube.com/embed/yYwLLyy-hZQ' allowfullscreen></iframe></p>
+			</div>	
+			<div id='listapartners' style= 'top:40px'>
+				Partners of Musica Electronica:
+				<ul class='moja_lista'>
+				    <li><a href='http://www.bhtelecom.ba' target='_blank'>BH Telecom</a></li>
+					<li><a href='http://www.tomorrowland.com/global-splash/' target='_blank'>Tomorrowland</a></li>
+					<li><a href='http://djmag.com/' target='_blank'>DJ Mag</a></li>
+					<li><a href='http://www.sensation.com/landing/' target='_blank'>Sensation</a></li>
+				</ul>
+			</div>");
 		}
 		?>		
-		<div id="video-container" style= "top:5px">
-		     <span class="videonaslov">Song of the day</span><p>
-             <iframe width="397" height="250" src="https://www.youtube.com/embed/yYwLLyy-hZQ" allowfullscreen></iframe></p>
-        </div>	
-		<div id="listapartners" style= "top:40px">
-		Partners of Musica Electronica:
-				<ul class="moja_lista">
-				    <li><a href="http://www.bhtelecom.ba" target="_blank">BH Telecom</a></li>
-					<li><a href="http://www.tomorrowland.com/global-splash/" target="_blank">Tomorrowland</a></li>
-					<li><a href="http://djmag.com/" target="_blank">DJ Mag</a></li>
-					<li><a href="http://www.sensation.com/landing/" target="_blank">Sensation</a></li>
-				</ul>
-		</div>
+		
 			
 		</div>
 		<div id="podnozje">
