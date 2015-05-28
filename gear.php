@@ -7,9 +7,8 @@
 	<link rel="stylesheet" type="text/css" href="WTprojekatStil.css">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 </HEAD>
-<BODY>	
-        
-		
+<BODY>
+    
 		<?php	
         $veza = new PDO("mysql:dbname=me;host=localhost;charset=utf8", "meuser", "bigbangkamehameha1");
 		$veza->exec("set names utf8");
@@ -19,7 +18,7 @@
 		if (isset($_GET['id']))
 		{
 			$vijest = $veza->query("select id, naslov, tekst, autor, UNIX_TIMESTAMP(vrijeme) vrijeme2, tip, slika from vijesti order by vrijeme desc");
-			$komentar = $veza->query("select id, vijest, tekst, UNIX_TIMESTAMP(vrijeme) vrijeme3, autor from komentari order by vrijeme desc");
+			$komentar = $veza->query("select id, vijest, tekst, UNIX_TIMESTAMP(vrijeme) vrijeme3, autor, emailautora from komentari order by vrijeme asc");
 			foreach ($vijest as $vijest1) 
 			{
 				if ($vijest1['id'] == $_GET['id'])
@@ -31,19 +30,24 @@
 					{
 						if ($komentar1['vijest'] == $_GET['id'])
 						{
-							print "<small>".$komentar1['autor']."</small><br>".$komentar1['tekst']."<small><br> ".date("d.m.Y. (h:i)", $komentar1['vrijeme3'])."</small><br><br>";
+							if (($komentar1['emailautora'])=="")
+								print "<small>".$komentar1['autor']."</small><br>".$komentar1['tekst']."<small><br> ".date("d.m.Y. (h:i)", $komentar1['vrijeme3'])."</small><br><br>";
+							else
+								print "<a href='mailto:".$komentar1['emailautora']."?subject=Vas komentar na MusicaElectronica&body=Default: Uspjesno ste ostavili komentar'><small>".$komentar1['autor']."</small></a><br>".$komentar1['tekst']."<small><br> ".date("d.m.Y. (h:i)", $komentar1['vrijeme3'])."</small><br><br>";
 						}
 					}
 			
-					print "<form method='post' action=' '><textarea name='komentar' id = 'komentar' placeholder='Comment' rows='10'></textarea><br>
+					print "<form method='post' action=' '><input type='email' name='email' placeholder ='Email'/><br>
+					<textarea name='komentar' id = 'komentar' placeholder='Comment' rows='5' cols='45'></textarea><br>
 					<input type='submit' name='submit' value ='Submit comment'/></form>";
 					if(isset($_POST['submit']))
 					{
 						$tekst = $_POST['komentar'];
+						$email = $_POST['email'];
 						if (isset($_SESSION['username']))
-							$SQL = $veza->query("INSERT INTO komentari SET vijest=".$_GET['id'].", tekst='$tekst', autor='$username'");	
+							$SQL = $veza->query("INSERT INTO komentari SET vijest=".$_GET['id'].", tekst='$tekst', autor='$username', emailautora='$email'");	
 						else 
-							$SQL = $veza->query("INSERT INTO komentari SET vijest=".$_GET['id'].", tekst='$tekst', autor='Anonymous'");	
+							$SQL = $veza->query("INSERT INTO komentari SET vijest=".$_GET['id'].", tekst='$tekst', autor='Anonymous', emailautora='$email'");
 							header("location: index.php?id=".$vijest1['id']);				
 					}
 				}
@@ -54,11 +58,11 @@
 		else 
 		{
 			$vijest = $veza->query("select id, naslov, tekst, autor, UNIX_TIMESTAMP(vrijeme) vrijeme2, tip, slika from vijesti order by vrijeme desc");
-			$komentar = $veza->query("select id, vijest, tekst, UNIX_TIMESTAMP(vrijeme) vrijeme3, autor from komentari order by vrijeme desc");
+			$komentar = $veza->query("select id, vijest, tekst, UNIX_TIMESTAMP(vrijeme) vrijeme3, autor, emailautora from komentari order by vrijeme asc");
 			$first = true;
 			foreach($vijest as $vijest1)
 			{	
-			    if ($vijest1['tip']=="gear")
+				if ($vijest1['tip']=="gear")
 				{
 				$rezultat1 = $veza->query("SELECT COUNT(*) FROM komentari WHERE vijest=$vijest1[id]");
 				$rezultat2 = $rezultat1->fetchColumn();
@@ -82,8 +86,8 @@
 				
 					$k=$k+1;
 				}
+				}
 	
-			}
 			}
 			print ("<div id='video-container' style= 'top:5px'>
 		     <span class='videonaslov'>Song of the day</span><p>
@@ -99,7 +103,7 @@
 				</ul>
 			</div>");
 		}
-		?>	
+		?>		
 		
 </BODY>
 </HTML>
