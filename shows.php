@@ -64,21 +64,21 @@
 				$rezultat2 = $rezultat1->fetchColumn();
 				if ($first)
 				{
-					print ("<div id = 'glavnaVijest'>
+					print "<div id = 'glavnaVijest'>
 					<img src ='".$vijest1['slika']."' style='height:250px; width:250px' />
 					<h3>".$vijest1['naslov']."</h3>
-					<p> ".implode(' ', array_slice(explode(' ', $vijest1['tekst']), 0, 30))."<a href='index.php?id=".$vijest1['id']."'>...more</a></p>
-					<p style='color: cyan;'>" .date("d.m.Y. ", $vijest1['vrijeme2']). " | by ".$vijest1['autor']."</p></div> ");
+					<p> ".implode(' ', array_slice(explode(' ', $vijest1['tekst']), 0, 30))."...<br><a href='index.php?id=".$vijest1['id']."'>".$rezultat2." komentara</a></p>
+					<p style='color: cyan;'>" .date("d.m.Y. ", $vijest1['vrijeme2']). " | by ".$vijest1['autor']."</p></div> ";
 					$first = false;		
 				}
 				else 
 				{
 					$k=2;
-					print ("<div id = 'vijest".$k."'>
+					print "<div id = 'vijest".$k."'>
 					<img src ='".$vijest1['slika']."' style='height:150px; width:150px' />
 					<h3>".$vijest1['naslov']."</h3>
-					<p> ".implode(' ', array_slice(explode(' ', $vijest1['tekst']), 0, 14))."<a href='index.php?id=".$vijest1['id']."'>...more</a></p>
-					<p style='color: cyan;'>" .date("d.m.Y. ", $vijest1['vrijeme2']). " | by ".$vijest1['autor']."</p></div> ");
+					<p> ".implode(' ', array_slice(explode(' ', $vijest1['tekst']), 0, 14))."...<br><a href='index.php?id=".$vijest1['id']."'>".$rezultat2." komentara</a></p>
+					<p style='color: cyan;'>" .date("d.m.Y. ", $vijest1['vrijeme2']). " | by ".$vijest1['autor']."</p></div> ";
 				
 					$k=$k+1;
 				}
