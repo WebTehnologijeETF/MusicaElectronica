@@ -42,8 +42,8 @@
 					<input type='submit' name='submit' value ='Submit comment'/></form>";
 					if(isset($_POST['submit']))
 					{
-						$tekst = $_POST['komentar'];
-						$email = $_POST['email'];
+						$tekst = htmlEntities($_POST['komentar'], ENT_QUOTES);
+						$email = htmlEntities($_POST['email'], ENT_QUOTES);
 						if (isset($_SESSION['username']))
 							$SQL = $veza->query("INSERT INTO komentari SET vijest=".$_GET['id'].", tekst='$tekst', autor='$username', emailautora='$email'");	
 						else 
