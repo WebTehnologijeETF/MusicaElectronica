@@ -6,10 +6,12 @@
     <TITLE>Musica Electronica</TITLE>
 	<link rel="stylesheet" type="text/css" href="WTprojekatStil.css">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<SCRIPT src = "Skripte.js" ></SCRIPT>
 </HEAD>
 <BODY>
     <div id="okvir">
         <div id="zaglavlje">
+		
 		
 			<?php	
 		$veza = new PDO("mysql:dbname=me;host=localhost;charset=utf8", "meuser", "bigbangkamehameha1");
@@ -21,8 +23,24 @@
 		if (isset($_SESSION['username']))
 		{
 			$username = $_SESSION['username'];
-			print "<div id='user' style='position:absolute; top:1.5%; right:25%;'><form method='post'>Logged in as ".$username."
-			<input type='submit' name='logout' value ='Logout'/></form></div>";
+			
+			$result = $veza->query("SELECT * FROM korisnici WHERE username='$username'");
+			$genre = "\"genre\"";
+			foreach ($result as $korisnik)
+			{
+			if ($korisnik['prava'] == 'admin'){			
+		
+					print "<div id='user' style='position:absolute; top:1.5%; right:25%;'><form method='post'>Logged in as ".$username."
+					<input type='submit' name='logout' value ='Logout'/> "?> <a onClick="ucitaj('adminpanel')" 
+					style="cursor: pointer; text-decoration: underline; color:blue">Admin panel</a><?php print "</form></div>";
+					
+			}
+				
+				else 
+					print "<div id='user' style='position:absolute; top:1.5%; right:25%;'><form method='post'>Logged in as ".$username."
+					<input type='submit' name='logout' value ='Logout'/></form></div>";
+			}
+			
 		}
         
 		
@@ -43,7 +61,7 @@
 		{
 			   print "<div id='loginn' style='position:absolute; top:1.5%; right:23%;'>
 			   <form method='post' action =''><input type = 'text' name = 'username' id='username' placeholder='username'>
-			   <input type = 'text' name = 'password' id='password' placeholder='password'>
+			   <input type = 'password' name = 'password' id='password' placeholder='password'>
 			   <input type='submit' name='login' value ='Login'/></form></div>";
 		}
 		
@@ -63,7 +81,6 @@
 		
 	    <div id="meni">	  
 	
-			<SCRIPT src = "Skripte.js" ></SCRIPT>
 			
 			<div id = "menuslide1" onmouseover="mouseOverGreyScale0('whatisME')" onmouseout="mouseOverGreyScale100('whatisME')">
 				<a href="#"  onmouseover="mouseOverMenu1('MEmenu', 'whatisME')" onmouseout="mouseOutMenu1('MEmenu', 'whatisME')"><div id="whatisME">About Musica Electronica</div></a>
