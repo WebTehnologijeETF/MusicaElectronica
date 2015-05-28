@@ -46,8 +46,8 @@
 		
 		else if (isset($_REQUEST['username'])) 
 		{
-				$username = $_REQUEST['username'];
-				$password = $_REQUEST['password'];
+				$username = htmlEntities($_REQUEST['username'], ENT_QUOTES);
+				$username = htmlEntities($_REQUEST['password'], ENT_QUOTES);
 				$upit = $veza->prepare("SELECT * FROM korisnici WHERE username=? and password=?");
 				$upit->execute(array($username,$password));
 		
@@ -135,8 +135,10 @@
 		{
 			$vijest = $veza->query("select id, naslov, tekst, autor, UNIX_TIMESTAMP(vrijeme) vrijeme2, tip, slika from vijesti order by vrijeme desc");
 			$komentar = $veza->query("select id, vijest, tekst, UNIX_TIMESTAMP(vrijeme) vrijeme3, autor, emailautora from komentari order by vrijeme asc");
+	
 			foreach ($vijest as $vijest1) 
 			{
+				
 				if ($vijest1['id'] == $_GET['id'])
 				{
 				
@@ -158,8 +160,8 @@
 					<input type='submit' name='submit' value ='Submit comment'/></form>";
 					if(isset($_POST['submit']))
 					{
-						$tekst = $_POST['komentar'];
-						$email = $_POST['email'];
+						$tekst = htmlEntities($_POST['komentar'], ENT_QUOTES);
+						$email = htmlEntities($_POST['email'], ENT_QUOTES);
 						if (isset($_SESSION['username']))
 							$SQL = $veza->query("INSERT INTO komentari SET vijest=".$_GET['id'].", tekst='$tekst', autor='$username', emailautora='$email'");	
 						else 
