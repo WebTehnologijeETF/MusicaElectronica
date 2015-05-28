@@ -161,9 +161,9 @@
 				if ($first)
 				{
 					print ("<div id = 'glavnaVijest'>
-					<img src ='".$vijest1['slika']."' height:'200' width:'150' />
+					<img src ='".$vijest1['slika']."' style='height:250px; width:250px' />
 					<h3>".$vijest1['naslov']."</h3>
-					<p> ". $vijest1['tekst']."<a href='index.php?id=".$vijest1['id']."'>...more</a></p>
+					<p> ".implode(' ', array_slice(explode(' ', $vijest1['tekst']), 0, 30))."<a href='index.php?id=".$vijest1['id']."'>...more</a></p>
 					<p style='color: cyan;'>" .date("d.m.Y. ", $vijest1['vrijeme2']). " | by ".$vijest1['autor']."</p></div> ");
 					$first = false;		
 				}
