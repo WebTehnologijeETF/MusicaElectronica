@@ -44,8 +44,9 @@
 				
 			}
 			
-			print "<form method='post' action=' '><input type = 'text' name ='vijestzabrisanje' placeholder='ID of news to be deleted'><br>
-			<input type='submit' name='obrisivijest' value ='Submit news' style= 'position: absolute; top: 67%; left: 27%'/><br></form>"
+			print "<form method='post' action=' '><input type = 'text' name ='vijestzabrisanje' placeholder='ID of news to be deleted' style= 'position: absolute; top: 83%; right: 30.7%'><br>
+			<input type='submit' name='obrisivijest' value ='Delete news' style= 'position: absolute; top: 88%; right: 34%'/><br></form>"
+			
 			
 			
 		?>		
