@@ -31,7 +31,7 @@
 			if ($korisnik['prava'] == 'admin'){			
 		
 					print "<div id='user' style='position:absolute; top:1.5%; right:25%;'><form method='post'>Logged in as ".$username."
-					<input type='submit' name='logout' value ='Logout'/> "?> <a onClick="ucitaj('adminpanel')" 
+					<input type='submit' name='logout' value ='Logout'/> "?> <a href="adminpanel.php" 
 					style="cursor: pointer; text-decoration: underline; color:blue">Admin panel</a><?php print "</form></div>";
 					
 			}
