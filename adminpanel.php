@@ -12,6 +12,65 @@
     <div id="okvir">
         <div id="zaglavlje">
 		
+		<?php	
+		$veza = new PDO("mysql:dbname=me;host=localhost;charset=utf8", "meuser", "bigbangkamehameha1");
+		$veza->exec("set names utf8");
+		
+		$vijest = $veza->query("select id, naslov, tekst, autor, UNIX_TIMESTAMP(vrijeme) vrijeme2, tip, slika from vijesti order by vrijeme desc");
+
+		session_start();		
+		if (isset($_SESSION['username']))
+		{
+			$username = $_SESSION['username'];
+			
+			$result = $veza->query("SELECT * FROM korisnici WHERE username='$username'");
+			$genre = "\"genre\"";
+			foreach ($result as $korisnik)
+			{
+			if ($korisnik['prava'] == 'admin'){			
+		
+					print "<div id='user' style='position:absolute; top:1.5%; right:25%;'><form method='post'>Logged in as ".$username."
+					<input type='submit' name='logout' value ='Logout'/> "?> <a href="adminpanel.php" 
+					style="cursor: pointer; text-decoration: underline; color:blue">Admin panel</a><?php print "</form></div>";
+					
+			}
+				
+				else 
+					print "<div id='user' style='position:absolute; top:1.5%; right:25%;'><form method='post'>Logged in as ".$username."
+					<input type='submit' name='logout' value ='Logout'/></form></div>";
+			}
+			
+		}
+        
+		
+		else if (isset($_REQUEST['username'])) 
+		{
+				$username = htmlEntities($_REQUEST['username'], ENT_QUOTES);
+				$username = htmlEntities($_REQUEST['password'], ENT_QUOTES);
+				$upit = $veza->prepare("SELECT * FROM korisnici WHERE username=? and password=?");
+				$upit->execute(array($username,$password));
+		
+			    $_SESSION['username'] = $username;		
+                header("location: index.php");				
+		}
+		
+		
+		
+		else
+		{
+			   print "<div id='loginn' style='position:absolute; top:1.5%; right:23%;'>
+			   <form method='post' action =''><input type = 'text' name = 'username' id='username' placeholder='username'>
+			   <input type = 'password' name = 'password' id='password' placeholder='password'>
+			   <input type='submit' name='login' value ='Login'/></form></div>";
+		}
+		
+		if (isset($_POST['logout']))
+		{
+			session_unset();
+			header("location: index.php");	
+		}
+		?>
+		
             <a href="index.php"><div id="logo">&nbsp;</div></a>
 			<a href="https://www.youtube.com/" target="_blank"><div id="ytlink"></div></a>
 			<div id="zaglavljeDivider"></div>
