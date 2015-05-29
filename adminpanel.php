@@ -101,12 +101,40 @@
 				$SQL = $veza->query("INSERT INTO vijesti SET naslov='$naslovv', tekst='$tekstt', autor='admin', tip='$tipp', slika='$slikaaa'");			
 			}
 			
-			print "<form method='post' action=' '><input type = 'text' name ='vijestzabrisanje' placeholder='ID of news to be deleted' style= 'position: absolute; top: 83%; right: 30.7%'><br>
-			<input type='submit' name='obrisivijest' value ='Delete news' style= 'position: absolute; top: 88%; right: 34%'/><br></form>";
+			print "<form method='post' action=' '><input type = 'text' name ='vijestzabrisanje' placeholder='ID of news' style= 'position: absolute; top: 83%; right: 30.7%'><br>
+			<input type='submit' name='obrisivijest' value ='Delete news' style= 'position: absolute; top: 88%; right: 34%'/><br>
+			<input type='submit' name='prikazikomentare' value ='Show comments' style= 'position: absolute; top: 88%; right: 24%'/></form>";
 			if (isset($_POST['obrisivijest']))
 			{
 				$idvijesti = $_POST['vijestzabrisanje'];
-				$SQL = $veza->query("DELETE FROM vijesti WHERE id=$idvijesti");
+				$SQL = $veza->query("DELETE FROM vijesti WHERE id=$idvijesti");	
+			}
+			if (isset($_POST['prikazikomentare']))
+			{
+				echo "<table border='1' cellpadding='10'>";
+				echo "<tr> <th>Comment ID</th> <th>Comment text</th> <th>Comment time</th> <th> Comment author </th></tr>";
+				$idvijesti = $_POST['vijestzabrisanje'];
+				$komentar = $veza->query("select id, vijest, tekst, UNIX_TIMESTAMP(vrijeme) vrijeme3, autor, emailautora from komentari order by vrijeme asc");	
+				foreach ($komentar as $komentar1)
+				{
+					if ($komentar1['vijest']==$idvijesti)
+					{
+						echo "<tr>";
+						echo "<td>".$komentar1['id']."</td>";
+						echo "<td>".$komentar1['tekst']."</td>";
+						echo "<td>".date("d.m.Y. (h:i)", $komentar1['vrijeme3'])."</td>";
+						echo "<td>".$komentar1['autor']."</td>";
+						echo "</tr>"; 	
+					}						
+				}
+				echo "</table>";
+				print "<form method='post' action=' '><input type = 'text' name ='komentarzabrisanje' placeholder='ID of comment' style= 'position: absolute; top: 180%; right: 30.7%'><br>
+				<input type='submit' name='obrisikomentar' value ='Delete comment' style= 'position: absolute; top: 185%; right: 32.3%'/><br></form>";
+				if (isset($_POST['obrisikomentar']))
+				{
+					$idkomentara = $_POST['komentarzabrisanje'];
+					$SQL1 = $veza->query("DELETE FROM komentari WHERE id=$idkomentara");	
+				}
 			}
 		?>
 		
