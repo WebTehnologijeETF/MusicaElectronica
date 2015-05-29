@@ -128,8 +128,8 @@
 					}						
 				}
 				echo "</table>";
-				print "<form method='post' action=' '><input type = 'text' name ='komentarzabrisanje' placeholder='ID of comment' style= 'position: absolute; top: 180%; right: 30.7%'><br>
-				<input type='submit' name='obrisikomentar' value ='Delete comment' style= 'position: absolute; top: 185%; right: 32.3%'/><br></form>";
+				print "<form method='post' action=' '><input type = 'text' name ='komentarzabrisanje' placeholder='ID of comment' style= 'position: absolute; top: 140%; right: 30.7%'><br>
+				<input type='submit' name='obrisikomentar' value ='Delete comment' style= 'position: absolute; top: 145%; right: 32.3%'/><br></form>";
 				if (isset($_POST['obrisikomentar']))
 				{
 					$idkomentara = $_POST['komentarzabrisanje'];
