@@ -93,10 +93,10 @@
 			
 			if (isset($_POST['dodajvijest']))
 			{
-				$naslovv = $_POST['naslovvijesti'];
-				$tekstt = $_POST['tekstvijesti'];
-				$tipp = $_POST['tipvijesti'];
-				$slikaaa = $_POST['slikaa'];
+				$naslovv =  htmlEntities($_POST['naslovvijesti'], ENT_QUOTES);
+				$tekstt = htmlEntities($_POST['tekstvijesti'], ENT_QUOTES);
+				$tipp = htmlEntities($_POST['tipvijesti'], ENT_QUOTES);
+				$slikaaa = htmlEntities($_POST['slikaa'], ENT_QUOTES);
 				
 				$SQL = $veza->query("INSERT INTO vijesti SET naslov='$naslovv', tekst='$tekstt', autor='admin', tip='$tipp', slika='$slikaaa'");			
 			}
