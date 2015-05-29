@@ -59,7 +59,7 @@
 		else
 		{
 			   print "<div id='loginn' style='position:absolute; top:1.5%; right:23%;'>
-			   <form method='post' action =''><input type = 'text' name = 'username' id='username' placeholder='username'>
+			   <form method='post' action =''><input type = 'text' name = 'admin' id='username' placeholder='username'>
 			   <input type = 'password' name = 'password' id='password' placeholder='password'>
 			   <input type='submit' name='login' value ='Login'/></form></div>";
 		}
@@ -157,7 +157,7 @@
 				$tipp = htmlEntities($_POST['tipvijesti'], ENT_QUOTES);
 				$slikaaa = htmlEntities($_POST['slikaa'], ENT_QUOTES);
 				
-				$SQL = $veza->query("INSERT INTO vijesti SET naslov='$naslovv', tekst='$tekstt', autor='admin', tip='$tipp', slika='$slikaaa'");			
+				$SQL = $veza->query("INSERT INTO vijesti SET naslov='$naslovv', tekst='$tekstt', autor='".$_SESSION['username']."', tip='$tipp', slika='$slikaaa'");			
 			}
 			
 			print "<form method='post' action=' '><input type = 'text' name ='vijestzabrisanje' placeholder='ID of news' style= 'position: absolute; top: 83%; right: 30.7%'><br>
