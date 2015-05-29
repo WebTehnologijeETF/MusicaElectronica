@@ -98,9 +98,7 @@
 				$tipp = $_POST['tipvijesti'];
 				$slikaaa = $_POST['slikaa'];
 				
-				$SQL = $veza->query("INSERT INTO vijesti SET naslov='$naslovv', tekst='$tekstt', autor='admin', tip='$tipp' slika='$slikaaa'");
-				
-				
+				$SQL = $veza->query("INSERT INTO vijesti SET naslov='$naslovv', tekst='$tekstt', autor='admin', tip='$tipp', slika='$slikaaa'");			
 			}
 			
 			print "<form method='post' action=' '><input type = 'text' name ='vijestzabrisanje' placeholder='ID of news to be deleted' style= 'position: absolute; top: 83%; right: 30.7%'><br>
