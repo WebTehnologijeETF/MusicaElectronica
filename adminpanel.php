@@ -109,6 +109,7 @@
 			{
 				$idvijesti = $_POST['vijestzabrisanje'];
 				$SQL = $veza->query("DELETE FROM vijesti WHERE id=$idvijesti");
+			}
 		?>
 		
 			
