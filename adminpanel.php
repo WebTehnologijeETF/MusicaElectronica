@@ -98,7 +98,7 @@
 				$tipp = $_POST['tipvijesti'];
 				$slikaaa = $_POST['slikaa'];
 				
-				$SQL = $veza->query("INSERT INTO vijesti SET naslov='rrr', tekst='fff', autor='Sharky', slika='feaf'");
+				$SQL = $veza->query("INSERT INTO vijesti SET naslov='$naslovv', tekst='$tekstt', autor='admin', tip='$tipp' slika='$slikaaa'");
 				
 				
 			}
