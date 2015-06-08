@@ -20,7 +20,6 @@ min-width: 800px;
 	background-size: cover;
     background-position: center;
 	background-attachment: fixed;	
-	overflow: hidden;
 }
 
 
@@ -222,8 +221,6 @@ body {
  
  
  #podnozje{
-   position: relative;
-   bottom: 0%;
    padding-top: 6px;
    padding-bottom: 12px;
    padding-left: 0px;
@@ -238,7 +235,6 @@ body {
    background-color: #FFFFFF;
    opacity: 0.6;
    min-width: 670px;
-   
  }
  
  #naslovGlavnaVijest
@@ -261,36 +257,19 @@ body {
 	text-align: left;
 	clear: both;
 	padding-bottom: 10px;
-	position: absolute;
-	top: -10px;
+	
 }
 
 #video-container{
     width: 397px;
-    padding-top: 0;
-	padding-left: 0;
-	padding-right: 0;
-	padding-bottom: 3.8%;
+    padding: 0;
 	height: 298px;
 	width: 30%;
 	margin-right: 17%;
 	float: right;
-	position: absolute;
-	top: 561px;
-	right:1px;
-	border-bottom: 1px solid #a1a1a1;
-}
-
-.video-container iframe {
-	width: 33%;
-	height: 33px;
-	float: right;
-	box-sizing: border-box;
-	min-width: 18%;
-	margin-right: 14%;
-	padding: 0;
 	position: relative;
-	top: -500px;	
+	top: -604px;
+	border-bottom: 1px solid #a1a1a1;
 }
 
 .bywho
@@ -302,7 +281,8 @@ body {
 #glavnaVijest, #showsglavnaVijest, #gearglavnaVijest
 {
     box-sizing: border-box;
-    width: 72%;  
+    max-width: 72%;
+	min-width: 40%;    
 	min-height: 180px;
 	height: 33%;
 	padding-top: 10px;
@@ -322,18 +302,20 @@ body {
 
 #vijest2, #vijest4, #vijest6  {
     box-sizing: border-box;
-    width: 42%;
+    width: 18%;
+    max-width: 18%;
 	min-width: 20px;
     min-height:30px;
-    height: 365px; 
+    height: 305px; 
 	padding-top: 10px;
-	padding-bottom: 100px;
+	padding-bottom: 280px;
 	padding-left: 0;
 	padding-right: 0;
-	margin-left: 5.3%;
+	margin-left: 14%;
 	margin-top: 0;
 	margin-bottom: 0;
 	float: left;
+	clear: left;
 	word-wrap: break-word;
 	font-size: 15px;
 	border-bottom: 1px solid #a1a1a1;
@@ -456,7 +438,18 @@ caption
     padding: 0;}
 
 
-
+.video-container iframe {
+	width: 33%;
+	height: 33px;
+	float: right;
+	box-sizing: border-box;
+	min-width: 18%;
+	margin-right: 14%;
+	padding: 0;
+	position: relative;
+	top: -500px;
+	
+}
 
 #TextAreaOstalo
 {
@@ -592,9 +585,8 @@ caption
 	padding-left: 0;
 	padding-right: 0;
 	float: right;
-	position: absolute;
-	top: 200px;
-	left:36.3%;
+	position: relative;
+	top: -595px;
 	border-bottom: 1px solid #a1a1a1;
 }
 
@@ -703,18 +695,19 @@ div.centrirano table
 	top: 115px;
 	display: none;
 	z-index: 999;
-	width: calc(100% / 6);
+	width: 225px;
 	background-color: #323234;	
-    list-style-type: none;
+	
+    list-style-type: none;	
 }
 
-#MEmenu {}
+#MEmenu {top: 115px;}
 
-#DJmenu { left: 16.7%;}
+#DJmenu { left: 225px;}
 
-#ShowsMenu { left: 33.4%;}
+#ShowsMenu { left: 450px;}
 
-#GearMenu{ left: 50.1%;}
+#GearMenu{ left: 675px;}
 
 #MEmenu li a, #DJmenu li a, #ShowsMenu li a, #GearMenu li a
 {
@@ -749,10 +742,4 @@ div.centrirano table
 	cursor: pointer;
 }
 
-#vijestii
-{
-	width: 40%;
-	overflow: hidden;
-	margin-left: 12.4%;
-	
-}
+
