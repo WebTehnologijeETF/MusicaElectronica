@@ -12,6 +12,7 @@
     <div id="okvir">
         <div id="zaglavlje">
 		
+		
 		<?php	
 		$veza = new PDO("mysql:dbname=me;host=localhost;charset=utf8", "meuser", "bigbangkamehameha1");
 		$veza->exec("set names utf8");
@@ -59,7 +60,7 @@
 		else
 		{
 			   print "<div id='loginn' style='position:absolute; top:1.5%; right:23%;'>
-			   <form method='post' action =''><input type = 'text' name = 'admin' id='username' placeholder='username'>
+			   <form method='post' action =''><input type = 'text' name = 'username' id='username' placeholder='username'>
 			   <input type = 'password' name = 'password' id='password' placeholder='password'>
 			   <input type='submit' name='login' value ='Login'/></form></div>";
 		}
@@ -70,6 +71,8 @@
 			header("location: index.php");	
 		}
 		?>
+		
+		
 		
             <a href="index.php"><div id="logo">&nbsp;</div></a>
 			<a href="https://www.youtube.com/" target="_blank"><div id="ytlink"></div></a>
@@ -125,8 +128,7 @@
 		</div>
 		
 		<div id="main">	
-		
-		<?php	
+			<?php	
 			$veza = new PDO("mysql:dbname=me;host=localhost;charset=utf8", "meuser", "bigbangkamehameha1");
 			$veza->exec("set names utf8");
 			
@@ -157,7 +159,7 @@
 				$tipp = htmlEntities($_POST['tipvijesti'], ENT_QUOTES);
 				$slikaaa = htmlEntities($_POST['slikaa'], ENT_QUOTES);
 				
-				$SQL = $veza->query("INSERT INTO vijesti SET naslov='$naslovv', tekst='$tekstt', autor='".$_SESSION['username']."', tip='$tipp', slika='$slikaaa'");			
+				$SQL = $veza->query("INSERT INTO vijesti SET naslov='$naslovv', tekst='$tekstt', autor='".$_SESSION['username']."', tip='$tipp', slika='$slikaaa'");						
 			}
 			
 			print "<form method='post' action=' '><input type = 'text' name ='vijestzabrisanje' placeholder='ID of news' style= 'position: absolute; top: 83%; right: 30.7%'><br>
@@ -195,7 +197,7 @@
 					$SQL1 = $veza->query("DELETE FROM komentari WHERE id=$idkomentara");	
 				}
 			}
-		?>
+		?>	
 		
 			
 		</div>
@@ -207,3 +209,29 @@
 </BODY>
 </HTML>
 
+ <!--DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+
+<HTML>
+<HEAD>
+    <TITLE>Musica Electronica</TITLE>
+	<link rel="stylesheet" type="text/css" href="WTprojekatStil.css">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</HEAD>
+<BODY>
+<div id="okvir">
+<div id="zaglavlje">
+<div id="logo"><img src="logo4.jpg" height="45px" width="41px"></div>
+<h1>	Musica electronica</h1>
+<div id="fblink"><a href="https://www.facebook.com/?_rdr" target="_blank">
+<img border="0" alt="Facebook page" src="fblink11.jpg">
+</a></div>
+<div id="twitterlink"><a href="https://twitter.com/?lang=en" target="_blank">
+<img border="0" alt="Twitter page" src="twitterlink111.jpg">
+<div id="googlepluslink"><a href="https://plus.google.com/" target="_blank">
+<img border="0" alt="Google+ page" src="googlepluslink1.jpg">
+</a></div>
+</div>
+</div>
+</BODY>
+</HTML>-->

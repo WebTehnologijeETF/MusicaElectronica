@@ -19,8 +19,10 @@
 		{
 			$vijest = $veza->query("select id, naslov, tekst, autor, UNIX_TIMESTAMP(vrijeme) vrijeme2, tip, slika from vijesti order by vrijeme desc");
 			$komentar = $veza->query("select id, vijest, tekst, UNIX_TIMESTAMP(vrijeme) vrijeme3, autor, emailautora from komentari order by vrijeme asc");
+	
 			foreach ($vijest as $vijest1) 
 			{
+				
 				if ($vijest1['id'] == $_GET['id'])
 				{
 				
@@ -39,8 +41,8 @@
 			
 					print "<form method='post' action=' '><input type='email' name='email' placeholder ='Email'/><br>
 					<textarea name='komentar' id = 'komentar' placeholder='Comment' rows='5' cols='45'></textarea><br>
-					<input type='submit' name='submit' value ='Submit comment'/></form>";
-					if(isset($_POST['submit']))
+					<input type='submit' name='submittt' value ='Submit comment'/></form>";
+					if(isset($_POST['submittt']))
 					{
 						$tekst = htmlEntities($_POST['komentar'], ENT_QUOTES);
 						$email = htmlEntities($_POST['email'], ENT_QUOTES);
@@ -48,7 +50,7 @@
 							$SQL = $veza->query("INSERT INTO komentari SET vijest=".$_GET['id'].", tekst='$tekst', autor='$username', emailautora='$email'");	
 						else 
 							$SQL = $veza->query("INSERT INTO komentari SET vijest=".$_GET['id'].", tekst='$tekst', autor='Anonymous', emailautora='$email'");
-							header("location: index.php?id=".$vijest1['id']);				
+							header("location: index.php?id=".$vijest1['id']);							
 					}
 				}
 			}		 
@@ -60,10 +62,10 @@
 			$vijest = $veza->query("select id, naslov, tekst, autor, UNIX_TIMESTAMP(vrijeme) vrijeme2, tip, slika from vijesti order by vrijeme desc");
 			$komentar = $veza->query("select id, vijest, tekst, UNIX_TIMESTAMP(vrijeme) vrijeme3, autor, emailautora from komentari order by vrijeme asc");
 			$first = true;
+			
 			foreach($vijest as $vijest1)
 			{	
-				if ($vijest1['tip']=="gear")
-				{
+				if ($vijest1['tip'] == "gear"){
 				$rezultat1 = $veza->query("SELECT COUNT(*) FROM komentari WHERE vijest=$vijest1[id]");
 				$rezultat2 = $rezultat1->fetchColumn();
 				if ($first)
@@ -74,6 +76,7 @@
 					<p> ".implode(' ', array_slice(explode(' ', $vijest1['tekst']), 0, 30))."...<br><a href='index.php?id=".$vijest1['id']."'>".$rezultat2." komentara</a></p>
 					<p style='color: cyan;'>" .date("d.m.Y. ", $vijest1['vrijeme2']). " | by ".$vijest1['autor']."</p></div> ");
 					$first = false;		
+					print "<div id = 'vijestii'>";
 				}
 				else 
 				{
@@ -86,24 +89,16 @@
 				
 					$k=$k+1;
 				}
-				}
 	
 			}
-			print ("<div id='video-container' style= 'top:5px'>
+			}
+			print ("</div><div id='video-container'>
 		     <span class='videonaslov'>Song of the day</span><p>
              <iframe width='397' height='250' src='https://www.youtube.com/embed/yYwLLyy-hZQ' allowfullscreen></iframe></p>
-			</div>	
-			<div id='listapartners' style= 'top:40px'>
-				Partners of Musica Electronica:
-				<ul class='moja_lista'>
-				    <li><a href='http://www.bhtelecom.ba' target='_blank'>BH Telecom</a></li>
-					<li><a href='http://www.tomorrowland.com/global-splash/' target='_blank'>Tomorrowland</a></li>
-					<li><a href='http://djmag.com/' target='_blank'>DJ Mag</a></li>
-					<li><a href='http://www.sensation.com/landing/' target='_blank'>Sensation</a></li>
-				</ul>
 			</div>");
 		}
 		?>		
+			
 		
 </BODY>
 </HTML>

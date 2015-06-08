@@ -10,37 +10,15 @@
 <BODY>
 		
 		
-			<span id="naslovforme">Partners</span>
-			<div id="text">
-				In construction...
+			<span id="naslovforme">Partners of Musica Electronica:</span>
+			<div id="listapartners">
+				<ul class="moja_lista">
+				    <li><a href='http://www.bhtelecom.ba' target='_blank'>BH Telecom</a></li>
+					<li><a href='http://www.tomorrowland.com/global-splash/' target='_blank'>Tomorrowland</a></li>
+					<li><a href='http://djmag.com/' target='_blank'>DJ Mag</a></li>
+					<li><a href='http://www.sensation.com/landing/' target='_blank'>Sensation</a></li>
+				</ul>
 			</div>		
 		
 </BODY>
 </HTML>
-
- <!--DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-
-
-<HTML>
-<HEAD>
-    <TITLE>Musica Electronica</TITLE>
-	<link rel="stylesheet" type="text/css" href="WTprojekatStil.css">
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-</HEAD>
-<BODY>
-<div id="okvir">
-<div id="zaglavlje">
-<div id="logo"><img src="logo4.jpg" height="45px" width="41px"></div>
-<h1>	Musica electronica</h1>
-<div id="fblink"><a href="https://www.facebook.com/?_rdr" target="_blank">
-<img border="0" alt="Facebook page" src="fblink11.jpg">
-</a></div>
-<div id="twitterlink"><a href="https://twitter.com/?lang=en" target="_blank">
-<img border="0" alt="Twitter page" src="twitterlink111.jpg">
-<div id="googlepluslink"><a href="https://plus.google.com/" target="_blank">
-<img border="0" alt="Google+ page" src="googlepluslink1.jpg">
-</a></div>
-</div>
-</div>
-</BODY>
-</HTML>-->
