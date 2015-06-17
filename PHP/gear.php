@@ -26,7 +26,7 @@
 				if ($vijest1['id'] == $_GET['id'])
 				{
 				
-					print "<img src ='".$vijest1['slika']."' height:'300' width:'300' /><h1>".$vijest1['naslov']."</h1><small> ".$vijest1['autor']."</small><p> ".$vijest1['tekst']."</p><small> "
+					print "<div id = 'ucitanaVijest'><img src ='".$vijest1['slika']."' style='height:320px; width:320px' /><h1>".$vijest1['naslov']."</h1><small> ".$vijest1['autor']."</small><p> ".$vijest1['tekst']."</p><small> "
 					.date("d.m.Y. (h:i)", $vijest1['vrijeme2'])."</small><br><br><br>";
 					foreach ($komentar as $komentar1)
 					{
@@ -41,7 +41,7 @@
 			
 					print "<form method='post' action=' '><input type='email' name='email' placeholder ='Email'/><br>
 					<textarea name='komentar' id = 'komentar' placeholder='Comment' rows='5' cols='45'></textarea><br>
-					<input type='submit' name='submittt' value ='Submit comment'/></form>";
+					<input type='submit' name='submittt' value ='Submit comment'/></form></div>";
 					if(isset($_POST['submittt']))
 					{
 						$tekst = htmlEntities($_POST['komentar'], ENT_QUOTES);
