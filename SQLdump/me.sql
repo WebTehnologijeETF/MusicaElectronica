@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2015 at 03:42 PM
+-- Generation Time: Jun 17, 2015 at 01:31 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -110,15 +110,15 @@ CREATE TABLE IF NOT EXISTS `vijesti` (
   `slika` varchar(40) COLLATE utf8_slovenian_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `autor` (`autor`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `vijesti`
 --
 
 INSERT INTO `vijesti` (`id`, `naslov`, `tekst`, `autor`, `vrijeme`, `tip`, `slika`) VALUES
-(1, 'Mike vale in cinemas sloga - 27.03.2015', 'On friday, 27th of March 2015. beginning at 11pm, famous Sloveninan house music DJ and producer, Mike Vale, held a concert in Sarajevo''s most famous nightclub, Cinemas Sloga, in front of 500 of his fans. Several guest DJs from Sarajevo also made their appearance: Hator Master, Dizzy Dee, Papa S and a few others. ', 'Sharky', '2015-05-28 09:38:50', 'shows', 'mikevale1.jpg'),
-(2, 'New Epsilon INNO-PROPAK', 'EPSILON DJT-1300 USB – Ultra Hi Torque Pro DJ Turntable with USB Output. Extremely High Torque Direct Drive motor with instant Dual Stop / Play buttons and Reverse button for the pro battle performance scratch DJ’s.\r\n\r\nThe DJT-1300 USB is a direct drive professional multi-speed digital quartz driven turntable that allows playback speed of 33, 45, 78 rpm, adjustable pitch control (+/- 8%, +/- 16% and +/- 50 %) for exact beat mixing, including Dual Play / Stop buttons for battle use and easy plug and play with any DJ Software for PC or MAC.\r\n\r\nDJT-1300 USB boasts electronic brake and a 330mm aluminum die cast turntable platter including a Static balance S-shaped tone arm with detachable head shell and both Phono / Line Output.', 'Webster', '2015-05-28 09:37:35', 'gear', 'epsilonpropak.jpg');
+(1, 'Mike vale in cinemas sloga - 27.03.2015', 'On friday, 27th of March 2015. beginning at 11pm, famous Sloveninan house music DJ and producer, Mike Vale, held a concert in Sarajevo''s most famous nightclub, Cinemas Sloga, in front of 500 of his fans. Several guest DJs from Sarajevo also made their appearance: Hator Master, Dizzy Dee, Papa S and a few others. ', 'Sharky', '2015-05-28 09:38:50', 'shows', 'slike/mikevale1.jpg'),
+(2, 'New Epsilon INNO-PROPAK', 'EPSILON DJT-1300 USB – Ultra Hi Torque Pro DJ Turntable with USB Output. Extremely High Torque Direct Drive motor with instant Dual Stop / Play buttons and Reverse button for the pro battle performance scratch DJ’s.\r\n\r\nThe DJT-1300 USB is a direct drive professional multi-speed digital quartz driven turntable that allows playback speed of 33, 45, 78 rpm, adjustable pitch control (+/- 8%, +/- 16% and +/- 50 %) for exact beat mixing, including Dual Play / Stop buttons for battle use and easy plug and play with any DJ Software for PC or MAC.\r\n\r\nDJT-1300 USB boasts electronic brake and a 330mm aluminum die cast turntable platter including a Static balance S-shaped tone arm with detachable head shell and both Phono / Line Output.', 'Webster', '2015-05-28 09:37:35', 'gear', 'slike/epsilonpropak.jpg');
 
 --
 -- Constraints for dumped tables

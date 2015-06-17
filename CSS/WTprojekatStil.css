@@ -16,7 +16,7 @@ min-width: 800px;
 	padding: 0;
 	width:100%;
 	height:100%;
-    background-image: url("mainbckg6.jpg");
+    background-image: url("../slike/mainbckg6.jpg");
 	background-size: cover;
     background-position: center;
 	background-attachment: fixed;	
@@ -67,7 +67,7 @@ body {
 	position: absolute;
 	top: 3px;
 	left: 50px;
-	background-image: url("logo.jpg");
+	background-image: url("../slike/logo.jpg");
 	width: 330px;
 	height:40px;
 }
@@ -82,7 +82,7 @@ body {
 	right: 143px;
 	height: 40px;
 	width: 41px;
-	background-image: url("fblink8.jpg");
+	background-image: url("../slike/fblink8.jpg");
 	width:16px;
 	height: 24px;
 }
@@ -98,7 +98,7 @@ body {
 	position: relative;
 	top: 13px;
 	right: 81px;
-	background-image: url("twitterlink8.jpg");
+	background-image: url("../slike/twitterlink8.jpg");
 	width:28px;
 	height: 19px;
 }
@@ -114,7 +114,7 @@ body {
 	position:relative;
 	top: 10px;
 	right: 16px;
-	background-image: url("googlepluslink8.jpg");
+	background-image: url("../slike/googlepluslink8.jpg");
 	width:16px;
 	height: 24px;
 
@@ -131,7 +131,7 @@ body {
 	position: relative;
 	top: 7px;
 	right: 221px;
-	background-image: url("ytlink3.jpg");
+	background-image: url("../slike/ytlink3.jpg");
 	width:23px;
 	height: 30px;
 }
@@ -186,13 +186,13 @@ body {
 	min-width: 20px;
 }
 
-#whatisME{background-image: url("menuitem1.jpg");}
-#djs{background-image: url("menuitem2.jpg");}
-#shows{background-image: url("menuitem3.png");}
-#gear{background-image: url("menuitem4.jpg");}
-#contact{background-image: url("menuitem51.jpg");}
-#partners{background-image: url("menuitem6.jpg");}
-#linkhome{background-image: url("linkhome.jpg");}
+#whatisME{background-image: url("../slike/menuitem1.jpg");}
+#djs{background-image: url("../slike/menuitem2.jpg");}
+#shows{background-image: url("../slike/menuitem3.png");}
+#gear{background-image: url("../slike/menuitem4.jpg");}
+#contact{background-image: url("../slike/menuitem51.jpg");}
+#partners{background-image: url("../slike/menuitem6.jpg");}
+#linkhome{background-image: url("../slike/linkhome.jpg");}
 
 
 #whatisME:hover, #djs:hover, #shows:hover, #gear:hover, #contact:hover, #partners:hover, #linkhome:hover { filter: none;
@@ -210,7 +210,7 @@ body {
     height:100%;
 	min-height: 600px;
     
-	background-image: url("mainbckg64.jpg");
+	background-image: url("../slike/mainbckg64.jpg");
 	background-size: cover;
     background-position: center;
 	background-attachment: fixed;
@@ -363,13 +363,13 @@ body {
  
  p {text-align: justify;}
 
- #imageGlavnaVijest{background-image: url("mikevale.jpg");}
- #imagevijest2{background-image: url("epsilonpropak.jpg");}
- #imagevijest3{background-image: url("epsilonpropak.jpg");}
- #imagevijest4{background-image: url("hardwellvijest4.jpg");}
- #imagevijest5{background-image: url("dyrovijest5.jpg");}
- #imagevijest6{background-image: url("logo3.jpg");}
- #imagevijest7{background-image: url("tmw.jpg");}
+ #imageGlavnaVijest{background-image: url("../slike/mikevale.jpg");}
+ #imagevijest2{background-image: url("../slike/epsilonpropak.jpg");}
+ #imagevijest3{background-image: url("../slike/epsilonpropak.jpg");}
+ #imagevijest4{background-image: url("../slike/hardwellvijest4.jpg");}
+ #imagevijest5{background-image: url("../slike/dyrovijest5.jpg");}
+ #imagevijest6{background-image: url("../slike/logo3.jpg");}
+ #imagevijest7{background-image: url("../slike/tmw.jpg");}
  
  #imageGlavnaVijest{
     width:240px; 
@@ -434,16 +434,16 @@ caption
 	font-size: 15px;
 }
 
-#tableslika1 {background-image: url("hardwellvijest4.jpg");}
-#tableslika2 {background-image: url("dvlm.jpg");}
-#tableslika3 {background-image: url("avb.jpg");}
-#tableslika4 {background-image: url("mg.jpg");}
-#tableslika5 {background-image: url("tiesto.jpg");}
-#tableslika6 {background-image: url("avicii.jpg");}
-#tableslika7 {background-image: url("dg.jpg");}
-#tableslika8 {background-image: url("skrilly.jpg");}
-#tableslika9 {background-image: url("nicky.jpg");}
-#tableslika10 {background-image: url("sa.jpg");}
+#tableslika1 {background-image: url("../slike/hardwellvijest4.jpg");}
+#tableslika2 {background-image: url("../slike/dvlm.jpg");}
+#tableslika3 {background-image: url("../slike/avb.jpg");}
+#tableslika4 {background-image: url("../slike/mg.jpg");}
+#tableslika5 {background-image: url("../slike/tiesto.jpg");}
+#tableslika6 {background-image: url("../slike/avicii.jpg");}
+#tableslika7 {background-image: url("../slike/dg.jpg");}
+#tableslika8 {background-image: url("../slike/skrilly.jpg");}
+#tableslika9 {background-image: url("../slike/nicky.jpg");}
+#tableslika10 {background-image: url("../slike/sa.jpg");}
 
 #tableslika1, #tableslika2, #tableslika3, #tableslika4, #tableslika5, #tableslika6,
 #tableslika7, #tableslika8, #tableslika9, #tableslika10 
@@ -644,13 +644,13 @@ caption
 
  
 
- #showsimageGlavnaVijest{background-image: url("tmw.jpg");}
- #showsimagevijest2{background-image: url("epsilonpropak.jpg");}
- #showsimagevijest3{background-image: url("aviciiconcert.jpg");}
- #showsimagevijest4{background-image: url("hardwellvijest4.jpg");}
- #showsimagevijest5{background-image: url("dyrovijest5.jpg");}
- #showsimagevijest6{background-image: url("tiesto.jpg");}
- #showsimagevijest7{background-image: url("sensation.jpg");}
+ #showsimageGlavnaVijest{background-image: url("../slike/tmw.jpg");}
+ #showsimagevijest2{background-image: url("../slike/epsilonpropak.jpg");}
+ #showsimagevijest3{background-image: url("../slike/aviciiconcert.jpg");}
+ #showsimagevijest4{background-image: url("../slike/hardwellvijest4.jpg");}
+ #showsimagevijest5{background-image: url("../slike/dyrovijest5.jpg");}
+ #showsimagevijest6{background-image: url("../slike/tiesto.jpg");}
+ #showsimagevijest7{background-image: url("../slike/sensation.jpg");}
  
  #showsimageGlavnaVijest,  #gearimageGlavnaVijest{
     width:240px; 
@@ -676,12 +676,12 @@ caption
 
  
 
- #gearimageGlavnaVijest{background-image: url("epsilonpropak.jpg");}
- #gearimagevijest7{background-image: url("epsilonspeakers.jpg");}
- #gearimagevijest3{background-image: url("udgcreatorcase.jpg");}
- #gearimagevijest4{background-image: url("ghp.jpg");}
- #gearimagevijest5{background-image: url("traktorkontrols8.jpg");}
- #gearimagevijest6{background-image: url(" pioneerplx1000.jpg");}
+ #gearimageGlavnaVijest{background-image: url("../slike/epsilonpropak.jpg");}
+ #gearimagevijest7{background-image: url("../slike/epsilonspeakers.jpg");}
+ #gearimagevijest3{background-image: url("../slike/udgcreatorcase.jpg");}
+ #gearimagevijest4{background-image: url("../slike/ghp.jpg");}
+ #gearimagevijest5{background-image: url("../slike/traktorkontrols8.jpg");}
+ #gearimagevijest6{background-image: url(" ../slike/pioneerplx1000.jpg");}
 
  
 

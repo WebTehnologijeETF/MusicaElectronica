@@ -4,9 +4,9 @@
 <HTML>
 <HEAD>
     <TITLE>Musica Electronica</TITLE>
-	<link rel="stylesheet" type="text/css" href="WTprojekatStil.css">
+	<link rel="stylesheet" type="text/css" href="CSS/WTprojekatStil.css">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	<SCRIPT src = "Skripte.js" ></SCRIPT>
+	<SCRIPT src = "JS/Skripte.js" ></SCRIPT>
 </HEAD>
 <BODY>
     <div id="okvir">
@@ -31,7 +31,7 @@
 			if ($korisnik['prava'] == 'admin'){			
 		
 					print "<div id='user' style='position:absolute; top:1.5%; right:25%;'><form method='post'>Logged in as ".$username."
-					<input type='submit' name='logout' value ='Logout'/> "?> <a href="adminpanel.php" 
+					<input type='submit' name='logout' value ='Logout'/> "?> <a onclick = "ucitaj('adminpanel')" 
 					style="cursor: pointer; text-decoration: underline; color:blue">Admin panel</a><?php print "</form></div>";
 					
 			}
