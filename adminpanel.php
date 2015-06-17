@@ -13,7 +13,7 @@
         <div id="zaglavlje">
 		
 		
-			<?php	
+		<?php	
 		$veza = new PDO("mysql:dbname=me;host=localhost;charset=utf8", "meuser", "bigbangkamehameha1");
 		$veza->exec("set names utf8");
 		
@@ -31,7 +31,7 @@
 			if ($korisnik['prava'] == 'admin'){			
 		
 					print "<div id='user' style='position:absolute; top:1.5%; right:25%;'><form method='post'>Logged in as ".$username."
-					<input type='submit' name='logout' value ='Logout'/> "?> <a href = "adminpanel.php" 
+					<input type='submit' name='logout' value ='Logout'/> "?> <a href="adminpanel.php" 
 					style="cursor: pointer; text-decoration: underline; color:blue">Admin panel</a><?php print "</form></div>";
 					
 			}
@@ -71,6 +71,9 @@
 			header("location: index.php");	
 		}
 		?>
+		
+		
+		
             <a href="index.php"><div id="logo">&nbsp;</div></a>
 			<a href="https://www.youtube.com/" target="_blank"><div id="ytlink"></div></a>
 			<div id="zaglavljeDivider"></div>
@@ -125,93 +128,76 @@
 		</div>
 		
 		<div id="main">	
-		<?php	
-        $veza = new PDO("mysql:dbname=me;host=localhost;charset=utf8", "meuser", "bigbangkamehameha1");
-		$veza->exec("set names utf8");
-		
-		$vijest = $veza->query("select id, naslov, tekst, autor, UNIX_TIMESTAMP(vrijeme) vrijeme2, tip, slika from vijesti order by vrijeme desc");
-						
-		if (isset($_GET['id']))
-		{
-			$vijest = $veza->query("select id, naslov, tekst, autor, UNIX_TIMESTAMP(vrijeme) vrijeme2, tip, slika from vijesti order by vrijeme desc");
-			$komentar = $veza->query("select id, vijest, tekst, UNIX_TIMESTAMP(vrijeme) vrijeme3, autor, emailautora from komentari order by vrijeme asc");
-	
-			foreach ($vijest as $vijest1) 
+			<?php	
+			$veza = new PDO("mysql:dbname=me;host=localhost;charset=utf8", "meuser", "bigbangkamehameha1");
+			$veza->exec("set names utf8");
+			
+			$vijesti = $veza->query("select id, naslov, tekst, autor, UNIX_TIMESTAMP(vrijeme) vrijeme2, tip, slika from vijesti order by vrijeme desc");
+			
+			echo "<table border='1' cellpadding='10'>";
+			echo "<tr> <th>Image</th> <th>News ID</th> <th>News title</th> <th> autor </th></tr>";
+			foreach ($vijesti as $vijest)
 			{
-				
-				if ($vijest1['id'] == $_GET['id'])
-				{
-				
-					print "<img src ='".$vijest1['slika']."' height:'300' width:'300' /><h1>".$vijest1['naslov']."</h1><small> ".$vijest1['autor']."</small><p> ".$vijest1['tekst']."</p><small> "
-					.date("d.m.Y. (h:i)", $vijest1['vrijeme2'])."</small><br><br><br>";
-					foreach ($komentar as $komentar1)
-					{
-						if ($komentar1['vijest'] == $_GET['id'])
-						{
-							if (($komentar1['emailautora'])=="")
-								print "<small>".$komentar1['autor']."</small><br>".$komentar1['tekst']."<small><br> ".date("d.m.Y. (h:i)", $komentar1['vrijeme3'])."</small><br><br>";
-							else
-								print "<a href='mailto:".$komentar1['emailautora']."?subject=Vas komentar na MusicaElectronica&body=Default: Uspjesno ste ostavili komentar'><small>".$komentar1['autor']."</small></a><br>".$komentar1['tekst']."<small><br> ".date("d.m.Y. (h:i)", $komentar1['vrijeme3'])."</small><br><br>";
-						}
-					}
-			
-					print "<form method='post' action=' '><input type='email' name='email' placeholder ='Email'/><br>
-					<textarea name='komentar' id = 'komentar' placeholder='Comment' rows='5' cols='45'></textarea><br>
-					<input type='submit' name='submittt' value ='Submit comment'/></form>";
-					if(isset($_POST['submittt']))
-					{
-						$tekst = htmlEntities($_POST['komentar'], ENT_QUOTES);
-						$email = htmlEntities($_POST['email'], ENT_QUOTES);
-						if (isset($_SESSION['username']))
-							$SQL = $veza->query("INSERT INTO komentari SET vijest=".$_GET['id'].", tekst='$tekst', autor='$username', emailautora='$email'");	
-						else 
-							$SQL = $veza->query("INSERT INTO komentari SET vijest=".$_GET['id'].", tekst='$tekst', autor='Anonymous', emailautora='$email'");
-							header("location: index.php?id=".$vijest1['id']);							
-					}
-				}
-			}		 
-		}
-		
-		
-		else 
-		{
-			$vijest = $veza->query("select id, naslov, tekst, autor, UNIX_TIMESTAMP(vrijeme) vrijeme2, tip, slika from vijesti order by vrijeme desc");
-			$komentar = $veza->query("select id, vijest, tekst, UNIX_TIMESTAMP(vrijeme) vrijeme3, autor, emailautora from komentari order by vrijeme asc");
-			$first = true;
-			
-			foreach($vijest as $vijest1)
-			{	
-				$rezultat1 = $veza->query("SELECT COUNT(*) FROM komentari WHERE vijest=$vijest1[id]");
-				$rezultat2 = $rezultat1->fetchColumn();
-				if ($first)
-				{
-					print ("<div id = 'glavnaVijest'>
-					<img src ='".$vijest1['slika']."' style='height:250px; width:250px' />
-					<h3>".$vijest1['naslov']."</h3>
-					<p> ".implode(' ', array_slice(explode(' ', $vijest1['tekst']), 0, 30))."...<br><a href='index.php?id=".$vijest1['id']."'>".$rezultat2." komentara</a></p>
-					<p style='color: cyan;'>" .date("d.m.Y. ", $vijest1['vrijeme2']). " | by ".$vijest1['autor']."</p></div> ");
-					$first = false;		
-					print "<div id = 'vijestii'>";
-				}
-				else 
-				{
-					$k=2;
-					print ("<div id = 'vijest".$k."'>
-					<img src ='".$vijest1['slika']."' style='height:150px; width:150px' />
-					<h3>".$vijest1['naslov']."</h3>
-					<p> ".implode(' ', array_slice(explode(' ', $vijest1['tekst']), 0, 14))."...<br><a href='index.php?id=".$vijest1['id']."'>".$rezultat2." komentara</a></p>
-					<p style='color: cyan;'>" .date("d.m.Y. ", $vijest1['vrijeme2']). " | by ".$vijest1['autor']."</p></div> ");
-				
-					$k=$k+1;
-				}
-	
+				echo "<tr>";
+				echo "<td><img src ='".$vijest['slika']."' style='height:150px; width:150px;' /></td>";
+				echo "<td>".$vijest['id']."</td>";
+				echo "<td>".$vijest['naslov']."</td>";
+				echo "<td>".$vijest['autor']."</td>";
+				echo "</tr>"; 				
 			}
-			print ("</div><div id='video-container'>
-		     <span class='videonaslov'>Song of the day</span><p>
-             <iframe width='397' height='250' src='https://www.youtube.com/embed/yYwLLyy-hZQ' allowfullscreen></iframe></p>
-			</div>");
-		}
-		?>		
+			echo "</table>";
+			print "<form method='post' action=' '><input type = 'text' name = 'naslovvijesti' id='naslovvijesti' placeholder='News title' style= 'position: absolute; top: 30%; right:31%' /><br>
+			<textarea name='tekstvijesti' id = 'tekstvijesti' placeholder='text' rows='7' cols='30' style= 'position: absolute; top: 34%; right:22%'></textarea><br>
+			<input type = 'text' name = 'tipvijesti' id='type' placeholder='News type(gear, shows or default:ostalo)' style= 'position: absolute; top: 55%; right:30.7%' /><br>
+			<input type = 'text' name = 'slikaa' id='slikaa' placeholder='News image link' style= 'position: absolute; top: 60%; right:30.7%' /><br>
+			<input type='submit' name='dodajvijest' value ='Submit news' style= 'position: absolute; top: 65%; right:34%'/><br></form>";
+			
+			if (isset($_POST['dodajvijest']))
+			{
+				$naslovv =  htmlEntities($_POST['naslovvijesti'], ENT_QUOTES);
+				$tekstt = htmlEntities($_POST['tekstvijesti'], ENT_QUOTES);
+				$tipp = htmlEntities($_POST['tipvijesti'], ENT_QUOTES);
+				$slikaaa = htmlEntities($_POST['slikaa'], ENT_QUOTES);
+				
+				$SQL = $veza->query("INSERT INTO vijesti SET naslov='$naslovv', tekst='$tekstt', autor='".$_SESSION['username']."', tip='$tipp', slika='$slikaaa'");						
+			}
+			
+			print "<form method='post' action=' '><input type = 'text' name ='vijestzabrisanje' placeholder='ID of news' style= 'position: absolute; top: 83%; right: 30.7%'><br>
+			<input type='submit' name='obrisivijest' value ='Delete news' style= 'position: absolute; top: 88%; right: 34%'/><br>
+			<input type='submit' name='prikazikomentare' value ='Show comments' style= 'position: absolute; top: 88%; right: 24%'/></form>";
+			if (isset($_POST['obrisivijest']))
+			{
+				$idvijesti = $_POST['vijestzabrisanje'];
+				$SQL = $veza->query("DELETE FROM vijesti WHERE id=$idvijesti");	
+			}
+			if (isset($_POST['prikazikomentare']))
+			{
+				echo "<table border='1' cellpadding='10'>";
+				echo "<tr> <th>Comment ID</th> <th>Comment text</th> <th>Comment time</th> <th> Comment author </th></tr>";
+				$idvijesti = $_POST['vijestzabrisanje'];
+				$komentar = $veza->query("select id, vijest, tekst, UNIX_TIMESTAMP(vrijeme) vrijeme3, autor, emailautora from komentari order by vrijeme asc");	
+				foreach ($komentar as $komentar1)
+				{
+					if ($komentar1['vijest']==$idvijesti)
+					{
+						echo "<tr>";
+						echo "<td>".$komentar1['id']."</td>";
+						echo "<td>".$komentar1['tekst']."</td>";
+						echo "<td>".date("d.m.Y. (h:i)", $komentar1['vrijeme3'])."</td>";
+						echo "<td>".$komentar1['autor']."</td>";
+						echo "</tr>"; 	
+					}						
+				}
+				echo "</table>";
+				print "<form method='post' action=' '><input type = 'text' name ='komentarzabrisanje' placeholder='ID of comment' style= 'position: absolute; top: 140%; right: 30.7%'><br>
+				<input type='submit' name='obrisikomentar' value ='Delete comment' style= 'position: absolute; top: 145%; right: 32.3%'/><br></form>";
+				if (isset($_POST['obrisikomentar']))
+				{
+					$idkomentara = $_POST['komentarzabrisanje'];
+					$SQL1 = $veza->query("DELETE FROM komentari WHERE id=$idkomentara");	
+				}
+			}
+		?>	
 		
 			
 		</div>
@@ -223,4 +209,29 @@
 </BODY>
 </HTML>
 
- 
+ <!--DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+
+<HTML>
+<HEAD>
+    <TITLE>Musica Electronica</TITLE>
+	<link rel="stylesheet" type="text/css" href="WTprojekatStil.css">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</HEAD>
+<BODY>
+<div id="okvir">
+<div id="zaglavlje">
+<div id="logo"><img src="logo4.jpg" height="45px" width="41px"></div>
+<h1>	Musica electronica</h1>
+<div id="fblink"><a href="https://www.facebook.com/?_rdr" target="_blank">
+<img border="0" alt="Facebook page" src="fblink11.jpg">
+</a></div>
+<div id="twitterlink"><a href="https://twitter.com/?lang=en" target="_blank">
+<img border="0" alt="Twitter page" src="twitterlink111.jpg">
+<div id="googlepluslink"><a href="https://plus.google.com/" target="_blank">
+<img border="0" alt="Google+ page" src="googlepluslink1.jpg">
+</a></div>
+</div>
+</div>
+</BODY>
+</HTML>-->

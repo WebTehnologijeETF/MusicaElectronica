@@ -105,6 +105,19 @@ function ucitaj(id) {
     ajax.send();
 }
 
+function ucitajj(id) {
+    var ajax = new XMLHttpRequest();
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+
+            document.getElementById("main").innerHTML = ajax.responseText;
+            refreshPage();
+        }
+    };
+    ajax.open("GET", "../PHP/" + id + ".php", true);
+    ajax.send();
+}
+
 
 
 var provjeraForme = function(){
